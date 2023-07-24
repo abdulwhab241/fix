@@ -13,51 +13,50 @@
 @include('layouts.head')
 </head>
 
+<body style="font-family: 'Cairo', sans-serif;">
 
-<body>
+    <div class="wrapper">
 
-<div class="wrapper">
+        <!--=================================
+ preloader -->
 
-    <!--=================================
-preloader -->
+        <div id="pre-loader">
+            {{-- <img src="/assets/images/pre-loader/loader-01.svg" alt=""> --}}
+            <img src="{{ URL::asset('assets/images/pre-loader/loader-01.svg') }}" alt="">
+        </div>
 
-    <div id="pre-loader">
-        {{-- <img src="/assets/images/pre-loader/loader-01.svg" alt=""> --}}
-        <img src="{{ URL::asset('assets/images/pre-loader/loader-01.svg') }}" alt="">
+        <!--=================================
+ preloader -->
+
+        @include('layouts.header')
+
+        @include('layouts.main-sidebar')
+
+        <!--=================================
+ Main content -->
+        <!-- main-content -->
+        <div class="content-wrapper">
+
+            @yield('page-header')
+
+            @yield('content')
+
+            <!--=================================
+ wrapper -->
+
+            <!--=================================
+ footer -->
+
+            @include('layouts.footer')
+        </div><!-- main content wrapper end-->
+    </div>
+    </div>
     </div>
 
     <!--=================================
-preloader -->
+ footer -->
 
-    @include('layouts.main-header')
-
-    @include('layouts.main-sidebar')
-
-    <!--=================================
-Main content -->
-    <!-- main-content -->
-    <div class="content-wrapper">
-
-        @yield('page-header')
-
-        @yield('content')
-
-        <!--=================================
-wrapper -->
-
-        <!--=================================
-footer -->
-
-        @include('layouts.footer')
-    </div><!-- main content wrapper end-->
-</div>
-</div>
-</div>
-
-<!--=================================
-footer -->
-
-@include('layouts.footer-scripts')
+    @include('layouts.footer-scripts')
 
 </body>
 
