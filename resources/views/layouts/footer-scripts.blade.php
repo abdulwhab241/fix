@@ -344,6 +344,8 @@ $(function () {
 <!-- custom -->
 <script src="{{ URL::asset('assets/js/custom.js') }}"></script>
 
+{{-- @toastr_js
+@toastr_render --}}
 
 
 <script>
@@ -352,7 +354,17 @@ $(function () {
     } );
 </script>
 
+<script type="text/javascript">
+    function printDiv() {
+        var printContents = document.getElementById('print').innerHTML;
+        var originalContents = document.body.innerHTML;
+        document.body.innerHTML = printContents;
+        window.print();
+        document.body.innerHTML = originalContents;
+        location.reload();
+    }
 
+</script>
 
 @if (App::getLocale() == 'en')
     <script src="{{ URL::asset('assets/js/bootstrap-datatables/en/jquery.dataTables.min.js') }}"></script>
@@ -377,7 +389,7 @@ $(function () {
         }
     }
 </script>
-
+{{-- 
 <script>
     $(document).ready(function () {
         $('select[name="Grade_id"]').on('change', function () {
@@ -391,7 +403,6 @@ $(function () {
                         $('select[name="Classroom_id"]').empty();
                         $('select[name="Classroom_id"]').append('<option selected disabled >{{trans('Parent_trans.Choose')}}...</option>');
                         $.each(data, function (key, value) {
-                            // $('select[name="Classroom_id"]').append('<option selected disabled >{{trans('Parent_trans.Choose')}}...</option>');
                             $('select[name="Classroom_id"]').append('<option value="' + key + '">' + value + '</option>');
                         });
                     },
@@ -447,6 +458,161 @@ $(function () {
                         $('select[name="Classroom_id_new"]').append('<option selected disabled >{{trans('Parent_trans.Choose')}}...</option>');
                         $.each(data, function (key, value) {
                             // $('select[name="Classroom_id_new"]').append('<option selected disabled >{{trans('Parent_trans.Choose')}}...</option>');
+                            $('select[name="Classroom_id_new"]').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    },
+                });
+            }
+            else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function () {
+        $('select[name="Classroom_id_new"]').on('change', function () {
+            var Classroom_id = $(this).val();
+            if (Classroom_id) {
+                $.ajax({
+                    url: "{{ URL::to('Get_Sections') }}/" + Classroom_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $('select[name="section_id_new"]').empty();
+                        $.each(data, function (key, value) {
+                            $('select[name="section_id_new"]').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    },
+                });
+            }
+            else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script> --}}
+
+<!-- Get Title for Classrooms -->
+<script>
+    $(document).ready(function () {
+        $('select[name="Classroom_id"]').on('change', function () {
+            var Classroom_id = $(this).val();
+            if (Classroom_id) {
+                $.ajax({
+                    url: "{{ URL::to('Get_title') }}/" + Classroom_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $('select[name="Fee_id"]').empty();
+                        $('select[name="Fee_id"]').append('<option selected disabled >{{'اختيار من القائمة...'}}...</option>');
+                        $.each(data, function (key, value) {
+                            $('select[name="Fee_id"]').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    },
+                });
+            }
+            else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script>
+
+<!-- Get Prices for Classrooms -->
+<script>
+    $(document).ready(function () {
+        $('select[name="Fee_id"]').on('change', function () {
+            var Fee_id = $(this).val();
+            if (Fee_id) {
+                $.ajax({
+                    url: "{{ URL::to('Get_prices') }}/" + Fee_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $('select[name="amount"]').empty();
+                        $('select[name="amount"]').append('<option selected disabled >{{'اختيار من القائمة...'}}...</option>');
+                        $.each(data, function (key, value) {
+                            $('select[name="amount"]').append('<option value="' + value + '">' + value + '</option>');
+                        });
+                    },
+                });
+            }
+            else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script>
+
+<!-- Get Classrooms for Grades -->
+<script>
+    $(document).ready(function () {
+        $('select[name="Grade_id"]').on('change', function () {
+            var Grade_id = $(this).val();
+            if (Grade_id) {
+                $.ajax({
+                    url: "{{ URL::to('Get_classrooms') }}/" + Grade_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $('select[name="Classroom_id"]').empty();
+                        $('select[name="Classroom_id"]').append('<option selected disabled >{{'اختيار من القائمة...'}}...</option>');
+                        $.each(data, function (key, value) {
+                            $('select[name="Classroom_id"]').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    },
+                });
+            }
+            else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script>
+
+
+<!-- Get Sections for Classrooms -->
+<script>
+    $(document).ready(function () {
+        $('select[name="Classroom_id"]').on('change', function () {
+            var Classroom_id = $(this).val();
+            if (Classroom_id) {
+                $.ajax({
+                    url: "{{ URL::to('Get_Sections') }}/" + Classroom_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $('select[name="Section_id"]').empty();
+                        $('select[name="Section_id"]').append('<option selected disabled >{{'اختيار من القائمة...'}}...</option>');
+                        $.each(data, function (key, value) {
+                            $('select[name="Section_id"]').append('<option value="' + key + '">' + value + '</option>');
+                        });
+                    },
+                });
+            }
+            else {
+                console.log('AJAX load did not work');
+            }
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function () {
+        $('select[name="Grade_id_new"]').on('change', function () {
+            var Grade_id = $(this).val();
+            if (Grade_id) {
+                $.ajax({
+                    url: "{{ URL::to('Get_classrooms') }}/" + Grade_id,
+                    type: "GET",
+                    dataType: "json",
+                    success: function (data) {
+                        $('select[name="Classroom_id_new"]').empty();
+                        $('select[name="Classroom_id_new"]').append('<option selected disabled >{{'اختيار من القائمة...'}}...</option>');
+                        $.each(data, function (key, value) {
                             $('select[name="Classroom_id_new"]').append('<option value="' + key + '">' + value + '</option>');
                         });
                     },

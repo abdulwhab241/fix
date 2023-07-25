@@ -1,11 +1,11 @@
 
 <!--=================================
 header start-->
-<nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+<nav class="admin-header navbar navbar-default col-lg-12 col-12 p-0 fixed-top d-flex flex-row" style="font-family: 'Cairo', sans-serif">
 <!-- logo -->
 <div class="text-left navbar-brand-wrapper">
 <a class="navbar-brand brand-logo" href="{{ route('dashboard') }}"><img src="{{ URL::asset('assets/images/log.png') }}" alt=""></a>
-<a class="navbar-brand brand-logo-mini" href="{{ route('dashboard') }}"><img src="{{ URL::asset('assets/images/logo-icon-dark.png') }}"
+<a class="navbar-brand brand-logo-mini" href="{{ route('dashboard') }}"><img src="{{ URL::asset('assets/images/lo.jpg') }}"
 alt=""></a>
 
 
@@ -231,7 +231,6 @@ alt=""></a>
     <a class="nav-link nav-pill user-avatar" data-toggle="dropdown" href="#" role="button"
         aria-haspopup="true" aria-expanded="false">
         <img src="{{ asset('/attachments/Admins/' . Auth::user()->image ) }}" class="img-circle" alt="{{ Auth::user()->name }}">
-        {{-- <img src="assets/images/profile-avatar.jpg" alt="avatar"> --}}
     </a>
     <div class="dropdown-menu dropdown-menu-right">
         <div class="dropdown-header">

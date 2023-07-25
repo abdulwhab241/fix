@@ -249,8 +249,8 @@ aria-labelledby="exampleModalLabel" aria-hidden="true">
 
 @endsection
 @section('js')
-@toastr_js
-@toastr_render
+{{-- @toastr_js
+@toastr_render --}}
 
 <script type="text/javascript">
 $(function() {

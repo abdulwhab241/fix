@@ -7,7 +7,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="keywords" content="HTML5 Template" />
-    <meta name="description" content="مدارس " />
+    <meta name="description" content="برنامج عبدالوهاب لإدارة المدارس " />
     <meta name="copyright" content="Abdulwhab Mohammed" />
     {{-- <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="keywords" content="HTML5 Template" />
