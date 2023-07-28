@@ -3,8 +3,8 @@
     <div class="modal-dialog modal-danger">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حذف سند قبض</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
                 <form action="{{route('Receipts.destroy','test')}}" method="post">
@@ -20,7 +20,7 @@
                         <button type="button" class="btn btn-outline"
                                 data-dismiss="modal">إغلاق</button>
                         <button type="submit"
-                                class="btn btn-outline">حذف البيانات</button>
+                                class="btn btn-danger">حذف البيانات</button>
                     </div>
                 </form>
             </div>

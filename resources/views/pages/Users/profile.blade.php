@@ -9,21 +9,21 @@
 @section('page-header')
 <!-- breadcrumb -->
 <div class="page-title">
-    <div class="row">
-        <div class="col-sm-6">
-            <h4 class="mb-0">    الملـف الشـخـصـي</h4>
-        </div>
-        <div class="col-sm-6">
-            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
-                <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">الرئيسية</a></li>
-                <li class="breadcrumb-item active">   الملـف الشـخـصـي</li>
-            </ol>
-        </div>
-    </div>
+<div class="row">
+<div class="col-sm-6">
+    <h4 class="mb-0">    الملـف الشـخـصـي</h4>
+</div>
+<div class="col-sm-6">
+    <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
+        <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">الرئيسية</a></li>
+        <li class="breadcrumb-item active">   الملـف الشـخـصـي</li>
+    </ol>
+</div>
+</div>
 </div>
 <!-- breadcrumb -->
 @section('PageTitle')
-    الملـف الشـخـصـي
+الملـف الشـخـصـي
 @stop
 <!-- breadcrumb -->
 @endsection
@@ -35,102 +35,7 @@
 <div class="card-body">
 
 <div class="row">
-    <div class="col-md-6" style="padding: 30px;">
-        <div class="box box-info">
-        <div class="box-header with-border">
-        <form class="form-horizontal" action="{{route('edit_user_Image', Auth::user()->id)}}" method="post" enctype="multipart/form-data">
-            @csrf
-        <div class="box-body">
-        <div class="card-body text-center">
-            <img src="{{ asset('/attachments/Admins/' . Auth::user()->image ) }}"
-            class=" img-fluid" style="width: 150px; margin-bottom: 10px;" alt="{{ Auth::user()->name }}" >
-            <h4 style="font-family: 'Cairo', sans-serif" class="margin">{{Auth::user()->name}}</h4>
-            <h5 style="font-family: 'Cairo', sans-serif" class="margin">  {{ Auth::user()->phone_number }} </h5>
-            <p class="margin">   {{ Auth::user()->job }}  </p>
-        </div>
-        </div>
-
-        <div class=" text-center">
-            <label  style="font-weight:bold; color:blue;">إختر صورة: </label>
-            <input type="hidden" name="Name" value="{{ Auth::user()->name  }}">
-                <input type="hidden" name="id" value="{{ Auth::user()->id }}">
-            <input type="file" accept="image/*" style="position: center;" name="photos" >
-
-        </div><br>
-            <div class="modal-footer ">
-                <button type="submit" class="btn btn-info btn-block">تعـديـل الصـورة</button>
-            </div><!-- /.box-footer -->
-        
-        </form>
-        </div>
-        </div>
-        </div>
-
-        <div class="col-md-6" style="padding: 30px;">
-
-            <div class="box box-info">
-            <div class="box-header with-border">
-            <form  action="{{route('StudentProfile.update',Auth::user()->id)}}"  method="post">
-                @csrf
-                <div class="box-body">
-            
-                    
-                <div class="form-group">
-                    <label class=" control-label">أسـم المستخدم</label>
-                    
-                        <input type="hidden" name="id" value="{{ Auth::user()->id }}">
-                        <input type="text" style="text-align: center; font-weight: bolder; font-size: 20px; background-color: #D0DEF6;" disabled class="form-control" value="{{ Auth::user()->name }}">
-                </div>
-                    {{-- </div> --}}
-            
-                    <div class="form-group">
-                        <label class=" control-label">كلمـة المـرور</label>
-                        
-                            <input type="text" required class="form-control" id="password" name="password">
-                        {{-- </div> --}}
-                    </div>
-                <br>
-            </div>
-            <div class="modal-footer ">
-                <button type="submit" class="btn btn-primary btn-block">تـعديـل البيانات</button>
-            </div><!-- /.box-footer -->
-            
-            
-            </form>
-            </div>
-            </div>
-            
-            </div>
-        </div>
-
-</div>
-</div>
-</div>
-</div>
-<!-- row closed -->
-
-{{-- @section('content') --}}
-{{-- 
-<!-- Content Header (Page header) -->
-<section class="content-header">
-<h1>
-الملـف الشـخـصـي
-</h1>
-<ol class="breadcrumb">
-    <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-
-<li class="active">الملـف الشـخـصـي</li>
-</ol>
-</section>
-
-<!-- Main content -->
-<section class="content" >
-
-<div class="row">
-<div class="col-xs-12">
-<div class="box">
-
-<div class="col-md-6">
+<div class="col-md-6" style="padding: 30px;">
 <div class="box box-info">
 <div class="box-header with-border">
 <form class="form-horizontal" action="{{route('edit_user_Image', Auth::user()->id)}}" method="post" enctype="multipart/form-data">
@@ -138,21 +43,19 @@
 <div class="box-body">
 <div class="card-body text-center">
     <img src="{{ asset('/attachments/Admins/' . Auth::user()->image ) }}"
-    class="rounded-circle img-fluid" style="width: 150px;" alt="{{ Auth::user()->name }}" >
+    class=" img-fluid" style="width: 150px; margin-bottom: 10px;" alt="{{ Auth::user()->name }}" >
     <h4 style="font-family: 'Cairo', sans-serif" class="margin">{{Auth::user()->name}}</h4>
     <h5 style="font-family: 'Cairo', sans-serif" class="margin">  {{ Auth::user()->phone_number }} </h5>
     <p class="margin">   {{ Auth::user()->job }}  </p>
 </div>
 </div>
-<div class="row">
-<div class="form-group text-center">
-    <label class="col-sm-4 control-label" style="font-weight:bold; color:blue;">إختر صورة: </label>
+
+<div class=" text-center">
+    <label  style="font-weight:bold; color:blue;">إختر صورة: </label>
     <input type="hidden" name="Name" value="{{ Auth::user()->name  }}">
-    <div class="col-sm-8">
         <input type="hidden" name="id" value="{{ Auth::user()->id }}">
     <input type="file" accept="image/*" style="position: center;" name="photos" >
-    </div>
-</div>
+
 </div><br>
     <div class="modal-footer ">
         <button type="submit" class="btn btn-info btn-block">تعـديـل الصـورة</button>
@@ -163,66 +66,60 @@
 </div>
 </div>
 
-<div class="col-md-6">
+<div class="col-md-6" style="padding: 30px;">
 
-<div class="box box-info">
-<div class="box-header with-border">
-<form class="form-horizontal" action="{{route('StudentProfile.update',Auth::user()->id)}}"  method="post">
-    @csrf
-    <div class="box-body">
-
-        
-    <div class="form-group">
-        <label class="col-sm-4 control-label">أسـم المستخدم</label>
-        <div class="col-sm-8">
-            <input type="hidden" name="id" value="{{ Auth::user()->id }}">
-            <input type="text" style="text-align: center; font-weight: bolder; font-size: 20px; background-color: #D0DEF6;" disabled class="form-control" value="{{ Auth::user()->name }}">
-        </div>
-        </div>
-
+    <div class="box box-info">
+    <div class="box-header with-border">
+    <form  action="{{route('edit_user_password',Auth::user()->id)}}"  method="post">
+        @csrf
+        <div class="box-body">
+    
+            
         <div class="form-group">
-            <label class="col-sm-4 control-label">كلمـة المـرور</label>
-            <div class="col-sm-8">
-                <input type="text" required class="form-control" id="password" name="password">
+            <label class=" control-label">أسـم المستخدم</label>
+            
+                <input type="hidden" name="id" value="{{ Auth::user()->id }}">
+                <input type="text" style="text-align: center; font-weight: bolder; font-size: 20px; background-color: #D0DEF6;" disabled class="form-control" value="{{ Auth::user()->name }}">
+        </div>
+            {{-- </div> --}}
+    
+            <div class="form-group">
+                <label class=" control-label">كلمـة المـرور</label>
+                
+                    <input type="text" required class="form-control" id="password" name="password">
+                {{-- </div> --}}
             </div>
-            </div>
-
-
-    <br>
-</div>
-<div class="modal-footer ">
-    <button type="submit" class="btn btn-primary btn-block">تـعديـل البيانات</button>
-</div><!-- /.box-footer -->
-
-
-</form>
-</div>
-</div>
-
+        <br>
+    </div>
+    <div class="modal-footer ">
+        <button type="submit" class="btn btn-primary btn-block">تـعديـل البيانات</button>
+    </div><!-- /.box-footer -->
+    
+    
+    </form>
+    </div>
+    </div>
+    
+    </div>
 </div>
 
 </div>
 </div>
 </div>
-
-
-
+</div>
 <!-- row closed -->
-</section> --}}
-
 @endsection
 @section('js')
-@toastr_js
-@toastr_render
+
 
 <script>
-function myFunction() {
+    function myFunction() {
     var x = document.getElementById("password");
     if (x.type === "password") {
-        x.type = "text";
+    x.type = "text";
     } else {
-        x.type = "password";
+    x.type = "password";
     }
-};
+    };
 </script>
 @endsection

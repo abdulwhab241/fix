@@ -6,35 +6,34 @@
 @stop
 @endsection
 
-@section('content')
-<!-- Content Header (Page header) -->
-<section class="content-header">
-<h1>
-تعديل رسوم دراسية
-</h1>
-<ol class="breadcrumb">
-<li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li><a href="{{route('Fees.index')}}"><i class="fa fa-dollar"></i> قائمـة الرسـوم الدراسيـة </a></li>
-<li class="active">تعديل رسوم دراسية</li>
-</ol>
-</section>
 
-<!-- Main content -->
-<section class="content" dir="rtl">
+@section('page-header')
+<!-- breadcrumb -->
+<div class="page-title">
+<div class="row">
+<div class="col-sm-6">
+<h4 class="mb-0">  تعديل رسوم دراسية</h4>
+</div>
+<div class="col-sm-6">
+<ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
+<li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">الرئيسية</a></li>
+<li class="breadcrumb-item active"> تعديل رسوم دراسية</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- breadcrumb -->
+@section('PageTitle')
+تعديل رسوم دراسية
+@stop
+<!-- breadcrumb -->
+@endsection
+@section('content')
 <!-- row -->
 <div class="row">
-<div class="col-xs-12">
-<div class="box">
-
-@if ($errors->any())
-<div class="alert alert-danger">
-    <ul>
-        @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-        @endforeach
-    </ul>
-</div>
-@endif
+<div class="col-md-12 mb-30">
+<div class="card card-statistics h-100">
+<div class="card-body">
 
 <form action="{{route('Fees.update','test')}}" method="post" autocomplete="off">
 @method('PUT')
@@ -54,7 +53,7 @@
 
     <div class="col-md-3">
         <label >المرحلة الدراسية</label>
-        <select class="form-control select2" style="width: 100%;" name="Grade_id">
+        <select class="form-control form-control-lg" name="Grade_id">
             @foreach($Grades as $Grade)
                 <option value="{{ $Grade->id }}" {{$Grade->id == $fee->grade_id ? 'selected' : ""}}>{{ $Grade->name }}</option>
             @endforeach
@@ -63,7 +62,7 @@
 
     <div class="col-md-3">
         <label>الصف الدراسي</label>
-        <select class="form-control select2" style="width: 100%;" name="Classroom_id">
+        <select class="form-control form-control-lg" name="Classroom_id">
             <option value="{{$fee->classroom_id}}">{{$fee->classroom->name_class}}</option>
             @foreach ($Classrooms as $Classroom)
             <option value="{{$Classroom->id}}">{{$Classroom->name_class}}</option>
@@ -79,7 +78,7 @@
 
     <div class="col-md-3">
         <label>السنة الدراسية</label>
-        <select class="form-control select2" style="width: 100%;" name="year">
+        <select class="form-control form-control-lg" name="year">
             @php
                 $current_year = date("Y")
             @endphp
@@ -96,7 +95,7 @@
 
     <div class="col-md-3">
         <label>التخـفيـض</label>
-        <select class="form-control select2" style="width: 100%;" name="Discount">
+        <select class="form-control form-control-lg" name="Discount">
             <option >{{$fee->discount}}</option>
             <option value="5">5%</option>
             <option value="10">10%</option>
@@ -130,13 +129,13 @@
 
 </form>
 
+
 </div>
 </div>
 </div>
-</section>
+</div>
 <!-- row closed -->
 @endsection
 @section('js')
-@toastr_js
-@toastr_render
+
 @endsection

@@ -1,41 +1,38 @@
 @extends('layouts.master')
 @section('css')
 @section('title')
-   استبعاد رسوم
+استبعاد رسوم
 @stop
 @endsection
+
+
 @section('page-header')
-
-@section('content')
-
-
-<!-- Content Header (Page header) -->
-<section class="content-header">
-<h1>
-استبعاد رسوم الطـالـب 
-</h1>
-<ol class="breadcrumb">
-<li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li><a href="{{route('ProcessingFee.index')}}"><i class="fa fa-user-times"></i> قائمـة معالجات الرسوم الدراسية </a></li>
-<li class="active">استبعاد رسوم طـالـب </li>
-</ol>
-</section>
-
-<!-- Main content -->
-<section class="content">
-
+<!-- breadcrumb -->
+<div class="page-title">
 <div class="row">
-<div class="col-xs-12">
-<div class="box">
-@if(session()->has('error'))
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-    <strong>{{ session()->get('error') }}</strong>
-    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-        <span aria-hidden="true">&times;</span>
-    </button>
+<div class="col-sm-6">
+<h4 class="mb-0">  اضافة استبعاد رسوم</h4>
 </div>
-@endif
-
+<div class="col-sm-6">
+<ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
+<li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">الرئيسية</a></li>
+<li class="breadcrumb-item active"> اضافة استبعاد رسوم</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- breadcrumb -->
+@section('PageTitle')
+اضافة استبعاد رسوم
+@stop
+<!-- breadcrumb -->
+@endsection
+@section('content')
+<!-- row -->
+<div class="row">
+<div class="col-md-12 mb-30">
+<div class="card card-statistics h-100">
+<div class="card-body">
 
 <form  action="{{route('ProcessingFee.store')}}"  method="POST" >
 @csrf
@@ -43,7 +40,7 @@
     <div class="row">
         <div class="col-md-4">
             <label >أسـم الطـالـب</label>
-            <select class="form-control select2" style="width: 100%;" name="Student_id">
+            <select class="form-control form-control-lg" name="Student_id">
                 <option  selected disabled>أختـر من القائمة...</option>
                 @foreach ($Enrollments as $Student)
                 <option value="{{$Student->student_id}}">{{$Student->student->name}}</option>
@@ -86,15 +83,13 @@
 
 </form>
 
-</div><!-- /.box-header -->
+
 </div>
 </div>
-</section><!-- /.content -->
-
-
+</div>
+</div>
+<!-- row closed -->
 @endsection
 @section('js')
-    @toastr_js
-    @toastr_render
 
 @endsection

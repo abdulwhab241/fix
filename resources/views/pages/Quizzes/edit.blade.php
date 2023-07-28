@@ -6,35 +6,34 @@
 @stop
 @endsection
 
-@section('content')
 
-<!-- Content Header (Page header) -->
-<section class="content-header">
-<h1>
-    تعديل إختبـار  
-</h1>
-<ol class="breadcrumb">
-    <li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-    <li><a href="{{route('Quizzes.index')}}"><i class="fas fa-book-open fa-fw"></i> قائمـة الإختبـارات </a></li>
-    <li class="active">تعديل إختبـار  </li>
-</ol>
-</section>
-
-<!-- Main content -->
-<section class="content">
-
+@section('page-header')
+<!-- breadcrumb -->
+<div class="page-title">
 <div class="row">
-<div class="col-xs-12">
-<div class="box">
-@if(session()->has('error'))
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-<strong>{{ session()->get('error') }}</strong>
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-</button>
+<div class="col-sm-6">
+<h4 class="mb-0">  تعديل الإختبـار</h4>
 </div>
-@endif
-
+<div class="col-sm-6">
+<ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
+<li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">الرئيسية</a></li>
+<li class="breadcrumb-item active"> تعديل الإختبـار</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- breadcrumb -->
+@section('PageTitle')
+تعديل الإختبـار
+@stop
+<!-- breadcrumb -->
+@endsection
+@section('content')
+<!-- row -->
+<div class="row">
+<div class="col-md-12 mb-30">
+<div class="card card-statistics h-100">
+<div class="card-body">
 
 <form class="form-horizontal"  action="{{ route('Quizzes.update', 'test') }}" method="post">
 {{ method_field('patch') }}
@@ -44,7 +43,7 @@
 
 <div class="col-md-4"> 
     <label>أختـبار شـهر</label>
-    <select class="form-control select2" style="width: 100%;" name="Exam_Date">
+    <select class="form-control form-control-lg" name="Exam_Date">
         <option value="{{ $Exam->month->id }}"> {{ $Exam->month->name }} </option>
         @foreach ($Months as $Month)
         <option value="{{ $Month->id }}">
@@ -63,7 +62,7 @@
     <label>الصـف الدراسي</label>
     <input id="id" type="hidden" name="id" class="form-control"
     value="{{ $Exam->id }}">
-    <select class="form-control select2" style="width: 100%;" name="Classroom_id">
+    <select class="form-control form-control-lg" name="Classroom_id">
         <option value="{{ $Exam->classroom->id }}">
             {{ $Exam->classroom->name_class }}
         </option>
@@ -82,7 +81,7 @@
 
 <div class="col-md-4">
     <label>الأستـاذ</label>
-    <select class="form-control select2" style="width: 100%;" name="Teacher_id">
+    <select class="form-control form-control-lg" name="Teacher_id">
         <option value="{{ $Exam->teacher->id }}">
             {{ $Exam->teacher->name }}
         </option>
@@ -100,14 +99,12 @@
 </div>
 
 </div><br>
-    
 
-    
 <div class="row">
 
 <div class="col-md-4"> 
     <label>المـادة</label>
-    <select class="form-control select2" style="width: 100%;" name="Subject_id">
+    <select class="form-control form-control-lg" name="Subject_id">
         <option value="{{ $Exam->subject->id }}">
             {{ $Exam->subject->name }}
         </option>
@@ -145,14 +142,14 @@
 
 </form>
 
+
 </div>
 </div>
 </div>
-</section><!-- /.content -->
+</div>
+<!-- row closed -->
 
 @endsection
 @section('js')
-@toastr_js
-@toastr_render
 
 @endsection

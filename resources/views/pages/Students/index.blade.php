@@ -38,8 +38,8 @@
 <div class="card-body">
 <a href="{{route('Students.create')}}" class="btn btn-success btn-sm" role="button"
 style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة طـالـب</a>
-<a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_students') }}">
-    <i class="fas fa-file-download"></i>  
+<a class="btn btn-primary btn-sm" title="تصـديـر إكسـيل" href="{{ route('export_students') }}">
+    <i class="fas fa-file-download"></i>   تصـديـر إكسـيل
 </a>
 <br><br>
 <div class="table-responsive">

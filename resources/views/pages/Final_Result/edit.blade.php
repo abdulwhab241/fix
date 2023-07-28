@@ -6,34 +6,35 @@
 @stop
 @endsection
 
-@section('content')
 
-<!-- Content Header (Page header) -->
-<section class="content-header">
-<h1>
-تعـديـل النتيـجـة النـهائـية للطـلاب <label style="color: #5686E0">{{$Final_Result->mid->student->name}}</label>
-</h1>
-<ol class="breadcrumb">
-<li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li><a href="{{route('Final_Results.index')}}"><i class="fas fa-percent fa-fw"></i> قائمـة النـتائـج النـهائـية للطـلاب </a></li>
-<li class="active">تعـديـل النتيـجـة النـهائـية للطـلاب</li>
-</ol>
-</section>
 
-<!-- Main content -->
-<section class="content">
-
+@section('page-header')
+<!-- breadcrumb -->
+<div class="page-title">
 <div class="row">
-<div class="col-xs-12">
-<div class="box">
-@if(session()->has('error'))
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-<strong>{{ session()->get('error') }}</strong>
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-</button>
+<div class="col-sm-6">
+<h4 class="mb-0">  تعـديـل النـتائـج النـهائـية للطـلاب</h4>
 </div>
-@endif
+<div class="col-sm-6">
+<ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
+<li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">الرئيسية</a></li>
+<li class="breadcrumb-item active"> تعـديـل النـتائـج النـهائـية للطـلاب</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- breadcrumb -->
+@section('PageTitle')
+تعـديـل النتيـجـة النـهائـية للطـلاب <label style="color: #5686E0">{{$Final_Result->mid->student->name}}</label>
+@stop
+<!-- breadcrumb -->
+@endsection
+@section('content')
+<!-- row -->
+<div class="row">
+<div class="col-md-12 mb-30">
+<div class="card card-statistics h-100">
+<div class="card-body">
 
 
 <form  action="{{route('Final_Results.update','test')}}"  method="POST" >
@@ -43,7 +44,7 @@
 <div class="row">
     <div class="col-md-4">
         <label>أسـم الطـالـب \ الطـالبـة</label>
-        <select class="form-control select2" style="width: 100%;" name="Student_id">
+        <select class="form-control form-control-lg" name="Student_id">
             <option value="{{$Final_Result->mid_id}}">{{$Final_Result->mid->student->name}}</option>
 
         </select>                        
@@ -56,7 +57,7 @@
 
     <div class="col-md-4">
         <label>المادة</label>
-        <select class="form-control select2" style="width: 100%;" name="Subject_id">
+        <select class="form-control form-control-lg" name="Subject_id">
             <option value="{{$Final_Result->subject_id}}">{{$Final_Result->subject->name}}</option>
             @foreach ($Subjects as $Subject)
                 <option value="{{$Subject->id}}">{{$Subject->name}}</option>
@@ -90,16 +91,13 @@ class="btn btn-success btn-block">تـأكيـد</button>
 </div>
 
 </form>
-
-
 </div>
 </div>
 </div>
-</section><!-- /.content -->
+</div>
+<!-- row closed -->
 
 @endsection
 @section('js')
-@toastr_js
-@toastr_render
 
 @endsection

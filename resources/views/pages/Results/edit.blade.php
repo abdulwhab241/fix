@@ -4,37 +4,35 @@
 تـعديـل نتيـجة
 @stop
 @endsection
+
+
 @section('page-header')
-
-@section('content')
-
-
-<!-- Content Header (Page header) -->
-<section class="content-header">
-<h1>
-تـعديـل نتيـجة الطـالـب 
-</h1>
-<ol class="breadcrumb">
-<li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li><a href="{{route('Results.index')}}"><i class="fas fa-percent"></i> قائمـة النـتائـج </a></li>
-<li class="active">تـعديـل نتيـجة طـالـب </li>
-</ol>
-</section>
-
-<!-- Main content -->
-<section class="content">
-
+<!-- breadcrumb -->
+<div class="page-title">
 <div class="row">
-<div class="col-xs-12">
-<div class="box">
-@if(session()->has('error'))
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-<strong>{{ session()->get('error') }}</strong>
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
+<div class="col-sm-6">
+<h4 class="mb-0">  تـعديـل نتيـجة الطـالـب</h4>
 </div>
-@endif
+<div class="col-sm-6">
+<ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
+<li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">الرئيسية</a></li>
+<li class="breadcrumb-item active"> تـعديـل نتيـجة الطـالـب</li>
+</ol>
+</div>
+</div>
+</div>
+<!-- breadcrumb -->
+@section('PageTitle')
+تـعديـل نتيـجة الطـالـب    
+@stop
+<!-- breadcrumb -->
+@endsection
+@section('content')
+<!-- row -->
+<div class="row">
+<div class="col-md-12 mb-30">
+<div class="card card-statistics h-100">
+<div class="card-body">
 
 <form class="form-horizontal"  action="{{ route('Results.update', 'test') }}" method="post">
 {{ method_field('patch') }}
@@ -43,7 +41,7 @@
 <div class="row">
     <div class="col-md-4"> 
         <label>الفـصل الـدراسـي</label>
-        <select class="form-control select2" style="width: 100%;" name="Semester_id">
+        <select class="form-control form-control-lg" name="Semester_id">
             <option value="{{ $Result->semester->id }}">
                 {{ $Result->semester->name }}
             </option>
@@ -62,7 +60,7 @@
 
     <div class="col-md-4">
         <label >نتيـجة شهـر</label>
-        <select class="form-control select2" style="width: 100%;" name="Result_name">
+        <select class="form-control form-control-lg" name="Result_name">
             <option value="{{ $Result->month->id }}">
                 {{ $Result->month->name }}
             </option>
@@ -76,7 +74,7 @@
 
     <div class="col-md-4"> 
         <label>المـادة</label>
-        <select class="form-control select2" style="width: 100%;" name="Exam_id">
+        <select class="form-control form-control-lg" name="Exam_id">
             <option value="{{ $Result->exam->subject->id }}">
                 {{ $Result->exam->subject->name }}
             </option>
@@ -93,7 +91,7 @@
 <div class="row">
 <div class="col-md-4"> 
     <label>أسـم الطـالـب \ الطـالبـة </label>
-    <select class="form-control select2" style="width: 100%;" name="Student_id">
+    <select class="form-control form-control-lg" name="Student_id">
         <option value="{{ $Result->student->id }}">
             {{ $Result->student->name }}
         </option>
@@ -113,7 +111,7 @@
 
 <div class="col-md-4">
     <label >التقـديـر</label>
-    <select class="form-control select2" style="width: 100%;" name="Appreciation">
+    <select class="form-control form-control-lg" name="Appreciation">
         <option >{{$Result->appreciation }}</option>
         <option value="ممـتـاز">ممـتـاز</option>
         <option value="جيـد جـداً">جيـد جـداً</option>
@@ -134,15 +132,12 @@ class="btn btn-success btn-block">تـأكيـد</button>
 
 </form>
 
-</div><!-- /.box-header -->
 </div>
 </div>
-</section><!-- /.content -->
-
-
+</div>
+</div>
+<!-- row closed -->
 @endsection
 @section('js')
-@toastr_js
-@toastr_render
 
 @endsection
