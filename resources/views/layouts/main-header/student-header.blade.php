@@ -86,7 +86,7 @@ alt=""></a>
             @if(Auth::User()->unreadNotifications->count() > 0)
             <a href="{{ route('ReadAll') }}" class="footer dropdown-item text-center">قـرائـة جميـع الإشعـارات</a>
             @else
-            <li class="footer text-center">لا يوجد إشعـارات لقـرائتـها </li>
+            <p class="footer text-center">لا يوجد إشعـارات لقـرائتـها </p>
             @endif
         </div>
         

@@ -322,8 +322,7 @@ Main content -->
 </div>
 </div>
 @endif
-</div>
-</div>
+
 
 
 
@@ -336,8 +335,7 @@ footer -->
 @include('layouts.footer')
 </div><!-- main content wrapper end-->
 </div>
-</div>
-</div>
+
 
 
 <!--=================================

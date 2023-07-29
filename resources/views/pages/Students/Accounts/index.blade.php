@@ -42,10 +42,10 @@
 <div class="box-body">
     <div class="row">
         <div class="col-md-6">
-            <table class="table table-responsive table-hover table-sm table-bordered p-0" style="text-align: center">
-                <caption style="font-weight: bolder; text-align:center;">$ الـرسـوم الـدراسيـة</caption>
+            <div class="table-responsive">
+                <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
                 <thead>
-                <tr class="alert-success">
+                <tr class="alert-info">
                     <th style="text-align: center; background-color: #E7EEFB;" >الـرسـوم الدراسيـة</th>
                     <th style="text-align: center; background-color: #E7EEFB;" >المبـلغ</th>
                 </tr>
@@ -60,12 +60,13 @@
                 @endforeach
                 </tbody>
                 </table>
+            </div>
         </div>
     <div class="col-md-6">
-    <table class="table table-responsive table-hover table-sm table-bordered p-0" style="text-align: center">
-        <caption style="font-weight: bolder; text-align:center;">$ الـرسـوم الـمدفـوعـة</caption>
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover" style="text-align: center" data-page-length="50">
         <thead>
-        <tr class="alert-success">
+        <tr class="alert-info">
             <th style="text-align: center; background-color: #E7EEFB;" > الرسـوم المـدفوعـة</th>
             <th style="text-align: center; background-color: #E7EEFB;" >المبـلغ</th>
             <th style="text-align: center; background-color: #E7EEFB;" >تاريـخ السـداد</th>
@@ -81,6 +82,7 @@
             @endforeach
         </tbody>
         </table>
+        </div>
     </div>
     </div>
 </div>

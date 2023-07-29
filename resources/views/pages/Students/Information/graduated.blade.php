@@ -6,58 +6,66 @@
 @stop
 @endsection
 
+
+@section('page-header')
+<!-- breadcrumb -->
+<div class="page-title">
+    <div class="row">
+        <div class="col-sm-6">
+            <h4 class="mb-0">    معلـومـات التخـرج</h4>
+        </div>
+        <div class="col-sm-6">
+            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
+                <li class="breadcrumb-item"><a href="{{ route('dashboard.Students') }}" class="default-color">الرئيسية</a></li>
+                <li class="breadcrumb-item active">   معلـومـات التخـرج</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb -->
+@section('PageTitle')
+    معلـومـات التخـرج
+@stop
+<!-- breadcrumb -->
+@endsection
 @section('content')
-
-
-<!-- Content Header (Page header) -->
-<section class="content-header">
-<h1>
-      <i class="fa fa-graduation-cap" aria-hidden="true"></i> معلـومـات التخـرج
-</h1>
-<ol class="breadcrumb">
-    <li><a href="{{ route('dashboard.Students') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-
-<li class="active">معلـومـات التخـرج</li>
-</ol>
-</section>
-
-<!-- Main content -->
-<section class="content">
-
+<!-- row -->
 <div class="row">
-<div class="col-xs-12">
-<div class="box">
-    @if($Graduations->count() > 0)
-<div class="box-body">
-<div class="box-body table-responsive no-padding">
-    <table class="table" style="width:100%; text-align: center;">
-<thead>
-    <tr>
-        <th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب</th>
-        <th style="text-align: center; background-color: #D0DEF6;">المرحلـة الدراسيـة</th>
-        <th style="text-align: center; background-color: #D0DEF6;">الصـف الدراسـي</th>
-        <th style="text-align: center; background-color: #D0DEF6;">الشعـبة</th>
-        <th style="text-align: center; background-color: #D0DEF6;"> تـاريـخ التـخرج</th>
-    </tr>
-</thead>
-<tbody>
-@foreach ($Graduations as $graduated)
-    
-
-    <tr>
-        <td>{{$graduated->student->name}}</td>
-        <td>{{$graduated->grade->name}}</td>
-        <td>{{$graduated->classroom->name_class}}</td>
-        <td style="font-weight: bolder;">{{$graduated->section->name_section}}</td>
-        <td>{{$graduated->date }}</td>
-    
-    </tr>
-    @endforeach
-</tbody>
-</table>
-</div>
-</div>
-@else
+<div class="col-md-12 mb-30">
+<div class="card card-statistics h-100">
+<div class="card-body">
+<div class="col-xl-12 mb-30">
+<div class="card card-statistics h-100">
+<div class="card-body">
+<br>
+@if($Graduations->count() > 0)
+<div class="table-responsive">
+    <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
+            data-page-length="50"
+            style="text-align: center">
+        <thead>
+        <tr class="alert-success">
+            <th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب</th>
+            <th style="text-align: center; background-color: #D0DEF6;">المرحلـة الدراسيـة</th>
+            <th style="text-align: center; background-color: #D0DEF6;">الصـف الدراسـي</th>
+            <th style="text-align: center; background-color: #D0DEF6;">الشعـبة</th>
+            <th style="text-align: center; background-color: #D0DEF6;"> تـاريـخ التـخرج</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach ($Graduations as $graduated)
+            <tr>
+                <td>{{$graduated->student->name}}</td>
+                <td>{{$graduated->grade->name}}</td>
+                <td>{{$graduated->classroom->name_class}}</td>
+                <td style="font-weight: bolder;">{{$graduated->section->name_section}}</td>
+                <td>{{$graduated->date }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+        </table>
+    </div>
+    @else
 <h1 style="margin: 10px; padding:10px; font-weight: bold; text-align: center; background-color:#85A8CF; ">
     <marquee direction="right">
         <b style="font-weight: bold; font-size:larger; color:white; margin: 10px;">
@@ -66,13 +74,15 @@
     </marquee>
     </h1>
 @endif
-
 </div>
 </div>
 </div>
-</section>
+</div>
+</div>
+</div>
+</div>
+<!-- row closed -->
 @endsection
 @section('js')
-@toastr_js
-@toastr_render
+
 @endsection
