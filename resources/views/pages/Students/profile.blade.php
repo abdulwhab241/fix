@@ -46,8 +46,8 @@
     <img src="{{ asset('/attachments/Profile/' . Auth::user()->image ) }}"
     class="rounded-circle img-fluid" style="width: 150px; margin-bottom: 10px;" alt="{{ Auth::user()->name }}" >
     <h4 style="font-family: 'Cairo', sans-serif" class="margin">{{Auth::user()->name}}</h4>
-    <h5 style="font-family: 'Cairo', sans-serif" class="margin">  {{ Auth::user()->phone_number }} </h5>
-    <p class="margin">   {{ Auth::user()->job }}  </p>
+    <h5 style="font-family: 'Cairo', sans-serif" class="margin">  {{ Auth::user()->classroom->name_class }} </h5>
+    <p class="margin">   {{ Auth::user()->section->name_section }}  </p>
 </div>
 </div>
 

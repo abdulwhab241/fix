@@ -2,82 +2,91 @@
 @section('css')
 
 @section('title')
-قائمة النتـائـج
+قائمة النتـائـج الشـهـريـة
 @stop
 @endsection
 
+
+@section('page-header')
+<!-- breadcrumb -->
+<div class="page-title">
+    <div class="row">
+        <div class="col-sm-6">
+            <h4 class="mb-0">    قائمة النتـائـج الشـهـريـة</h4>
+        </div>
+        <div class="col-sm-6">
+            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
+                <li class="breadcrumb-item"><a href="{{ url('/teacher/dashboard') }}" class="default-color">الرئيسية</a></li>
+                <li class="breadcrumb-item active">   قائمة النتـائـج الشـهـريـة</li>
+            </ol>
+        </div>
+    </div>
+</div>
+<!-- breadcrumb -->
+@section('PageTitle')
+    قائمة النتـائـج الشـهـريـة
+@stop
+<!-- breadcrumb -->
+@endsection
 @section('content')
-
-<!-- Content Header (Page header) -->
-<section class="content-header">
-<h1>
-قائمة النتـائـج الشـهـريـة
-</h1>
-<ol class="breadcrumb">
-<li><a href="{{ url('/teacher/dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-
-<li class="active">قائمة النتـائـج الشـهـريـة</li>
-</ol>
-</section>
-
-
-<!-- Main content -->
-<section class="content" dir="rtl">
-
+<!-- row -->
 <div class="row">
-<div class="col-xs-12">
-<div class="box">
-
-<div class="box-header">
-
-<a class="btn btn-primary btn-flat" href="{{route('TeacherResult.create')}}">
-    اضافة نتيجـة</a>
-<br><br>
-<div class="box-tools">
-<div class="input-group" style="width: 150px;">
-<h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
-</div>
-</div>
-</div>
-
-
-<div class="box-body">
-<div class="row">
+<div class="col-md-12 mb-30">
+<div class="card card-statistics h-100">
 <div class="card-body">
+<div class="col-xl-12 mb-30">
+<div class="card card-statistics h-100">
+<div class="card-body">
+<a href="{{route('TeacherResult.create')}}" class="btn btn-success btn-sm" role="button"
+style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة نتيجـة شهرية جديدة</a>
+<br><br>
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissible fade show" role="alert">
+<ul>
+@foreach ($errors->all() as $error)
+<li>{{ $error }}</li>
+@endforeach
+</ul>
+<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+<span aria-hidden="true">&times;</span>
+</button>
+</div>
+@endif
 
-<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+
+<div class="card card-statistics h-100">
+<div class="card-body">
+<div class="accordion gray plus-icon round">
+
 @foreach ($results as $result)
 
-<div class="panel panel-info">
-
-<div class="panel-heading" role="tab" id="heading">
-<h4 class="panel-title" style="font-weight: bolder;">
-<a class="collapsed " role="button" data-toggle="collapse"  data-parent="#selector" href="#collapse" aria-expanded="false" aria-controls="collapse">
+<div class="acd-group">
+<a href="#" class="acd-heading">
     {{ $result->My_Classes->name_class }} , الـشـعبـة: {{ $result->name_section }} 
 </a>
-</h4>
-</div>
-<div id="collapse" class="panel-collapse collapse in" role="tab" aria-labelledby="heading">
-<div class="panel-body">
+<div class="acd-des">
 
-<div class="box-body">
-    <div class="box-body table-responsive no-padding">
-    <table  class="table" style="width:100%; text-align: center;">
-        <caption style="font-weight: bolder; text-align:center; color:black; background-color: #E7EEFB;">
-            {{ $result->My_Classes->name_class }} , الـشـعبـة: {{ $result->name_section }} 
-        </caption>
-    <thead>
-    <tr>
-        <th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب \ الطـالبـة </th>
-        <th style="text-align: center;  background-color: #D0DEF6;" > المـادة</th>
-        <th style="text-align: center;  background-color: yellow; font-weight:bolder;" >نتيـجـة إختبـار شهـر </th>
-        <th style="text-align: center;  background-color: #D0DEF6;" >الدرجـة التي حصـل عليـها </th>
-        <th style="text-align: center;  background-color: #D0DEF6;" >التقـديـر </th>
-        <th style="text-align: center;" class="alert-warning">العمليـات</th>
-    
-    </tr>
-    </thead>
-    <tbody>
+<div class="row">
+<div class="col-xl-12 mb-30">
+<div class="card card-statistics h-100">
+<div class="card-body">
+<div class="d-block d-md-flex justify-content-between">
+<div class="d-block">
+</div>
+</div>
+<div class="table-responsive mt-15">
+<table class="table table-hover table-sm table-bordered p-0" style="text-align: center">
+<thead>
+<tr class="text-dark">
+    <th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب \ الطـالبـة </th>
+    <th style="text-align: center;  background-color: #D0DEF6;" > المـادة</th>
+    <th style="text-align: center;  background-color: yellow; font-weight:bolder;" >نتيـجـة إختبـار شهـر </th>
+    <th style="text-align: center;  background-color: #D0DEF6;" >الدرجـة التي حصـل عليـها </th>
+    <th style="text-align: center;  background-color: #D0DEF6;" >التقـديـر </th>
+    <th style="text-align: center;" class="alert-warning">العمليـات</th>
+</tr>
+</thead>
+<tbody>
     @foreach($result->Results as $Result)
         <tr>
 
@@ -90,24 +99,23 @@
                 <div class="btn-group">
                 <button type="button" style="margin: 3px;" class="btn btn-info btn-sm" data-toggle="modal"
                 data-target="#edit{{ $Result->id }}"
-                title="تعديل"><i class="fa fa-edit"></i></button>
-                <button type="button" style="margin: 3px;" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_result{{ $Result->id }}" title="حذف"><i class="fa fa-trash"></i></button>
+                title="تعديل">تعديل</button>
+                <button type="button" style="margin: 3px;" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_result{{ $Result->id }}" title="حذف">حذف</button>
                 </div>
             </td>
         </tr>
 
-            
 <!-- edit_modal_Grade -->
 <div class="modal fade" id="edit{{ $Result->id }}" tabindex="-1" role="dialog"
 aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-primary" role="document">
 <div class="modal-content">
 <div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
 id="exampleModalLabel">
 تعديل نتيجـة الطـالـب {{$Result->student->name}}
 </h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 </div>
 <div class="modal-body">
 <!-- add_form -->
@@ -119,7 +127,7 @@ id="exampleModalLabel">
     <div class="row">
         <div class="col-md-6">
             <label >الفصل الدراسي</label>
-            <select class="form-control select2" style="width: 100%;" name="Semester_id">
+            <select class="form-control form-control-lg" name="Semester_id">
                 <option value="{{ $Result->semester_id }}"> {{ $Result->semester->name }} </option>
                 @foreach ($Semesters as $Semester)
                 <option value="{{ $Semester->id }}">
@@ -130,7 +138,7 @@ id="exampleModalLabel">
         </div>
         <div class="col-md-6">
             <label >إختبـار شهـر</label>
-            <select class="form-control select2" style="width: 100%;" name="Result_name">
+            <select class="form-control form-control-lg" name="Result_name">
                 <option value="{{ $Result->month_id }}"> {{ $Result->month->name }} </option>
                 @foreach ($Months as $Month)
                 <option value="{{ $Month->id }}">
@@ -146,7 +154,7 @@ id="exampleModalLabel">
         <label>أسـم الطـالـب \ الطـالبـة </label>
         <input id="id" type="hidden" name="id" class="form-control"
         value="{{ $Result->id }}">
-        <select class="form-control select2" style="width: 100%;" name="Student_id">
+        <select class="form-control form-control-lg" name="Student_id">
             <option value="{{ $Result->student_id }}">
                 {{ $Result->student->name }}
             </option>
@@ -156,7 +164,7 @@ id="exampleModalLabel">
 
     <div class="col-md-6"> 
         <label>المـادة</label>
-        <select class="form-control select2" style="width: 100%;" name="Exam_id">
+        <select class="form-control form-control-lg" name="Exam_id">
             <option value="{{ $Result->exam_id }}">
                 {{ $Result->exam->subject->name }}
             </option>
@@ -179,7 +187,7 @@ id="exampleModalLabel">
 
 <div class="col-md-6">
     <label >التقـديـر</label>
-    <select class="form-control select2" style="width: 100%;" name="Appreciation">
+    <select class="form-control form-control-lg" name="Appreciation">
         <option >{{$Result->appreciation }}</option>
         <option value="ممـتـاز">ممـتـاز</option>
         <option value="جيـد جـداً">جيـد جـداً</option>
@@ -213,9 +221,8 @@ class="btn btn-info btn-block">تـعديـل البيانات</button>
 {{csrf_field()}}
 <div class="modal-content">
 <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف نتيجـة</h5>
-
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 </div>
 <div class="modal-body">
     <p> هل انت متاكد من عملية حذف نتيجـة الطـالـب  </p>
@@ -230,27 +237,20 @@ class="btn btn-info btn-block">تـعديـل البيانات</button>
     <button type="button" class="btn btn-outline"
             data-dismiss="modal">إغلاق</button>
     <button type="submit"
-            class="btn btn-outline">حذف البيانات</button>
+            class="btn btn-danger">حذف البيانات</button>
 </div>
 </div>
 </form>
 </div>
 </div>
-    
-    
-    
-@endforeach 
+
+
+@endforeach
 </tbody>
 </table>
-
-<div class="footer">
-    <a href="{{ route('TeacherResult.print',$result->id) }}" style="margin: 10px; padding:5px;" class="btn .btn.bg-navy  pull-left">
-        <i class="fa fa-print" aria-hidden="true"></i>  طبـاعـة  </a>
-</div>
-
 </div>
 </div>
-
+</div>
 </div>
 </div>
 </div>
@@ -258,17 +258,18 @@ class="btn btn-info btn-block">تـعديـل البيانات</button>
 </div>
 </div>
 </div>
-</div><!--box -->
+</div>
 
 
 </div>
 </div>
 </div>
-</section>
+</div>
+</div>
+</div>
 
-
+<!-- row closed -->
 @endsection
 @section('js')
-@toastr_js
-@toastr_render
+
 @endsection

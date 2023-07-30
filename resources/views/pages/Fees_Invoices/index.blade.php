@@ -38,9 +38,9 @@
 <div class="card card-statistics h-100">
 <div class="card-body">
     <div class="box-body">
-        <a href="{{route('Fees_Invoices.create')}}" class="btn btn-success btn-sm" role="button"
+        <a href="{{route('Fees_Invoices.create')}}" style="margin: 5px; padding:5px;" class="btn btn-success btn-sm" role="button"
         aria-pressed="true">اضافة فـاتـورة جديدة</a>
-        <a class="btn btn-primary btn-flat" title="تصـديـر إكسـيل" href="{{ route('export_fee_invoices') }}">
+        <a class="btn btn-primary btn-flat" style="margin: 5px; padding:5px;" title="تصـديـر إكسـيل" href="{{ route('export_fee_invoices') }}">
             <i class="fas fa-file-download"></i>   تصـديـر إكسـيل
         </a>
     </div>

@@ -59,38 +59,12 @@
             </div>
             <div class="col-md-3"> 
                 <div class="form-group">
-                <label>المرحلة الدراسية</label>
-                <select class="form-control form-control-lg"  name="Grade_id">
-                    <option  selected disabled>أختـر من القائمة...</option>
-                    @foreach ($Grades as $Grade)
-                        <option  value="{{ $Grade->id }}" required>{{ $Grade->name }}</option>
-                    @endforeach
-                </select>
-                </div>
-                @error('Grade_id')
-                <div class=" alert-danger">
-                <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-                </div>
-                @enderror
-            </div>
-            <div class="col-md-3"> 
-                <div class="form-group">
-                <label>الصـف الدراسي</label>
-                <select class="form-control form-control-lg" name="Classroom_id">
-    
-                </select>
-                </div>
-                @error('Classroom_id')
-                <div class=" alert-danger">
-                <span style="text-align: center; font-weight: bold;"><h3 style="text-align: center font-weight: bold;"> {{ $message }}</h3></span>
-                </div>
-                @enderror
-            </div>
-            <div class="col-md-3"> 
-                <div class="form-group">
                 <label>نـوع الرسـوم </label>
                 <select class="form-control form-control-lg" name="Fee_id">
-    
+                    <option  selected disabled>أختـر من القائمة...</option>
+                    @foreach ($Fees as $Fee)
+                        <option  value="{{ $Fee->id }}">{{ $Fee->fee_type }}</option>
+                    @endforeach
                 </select>
                 </div>
                 @error('Fee_id')
@@ -99,8 +73,6 @@
                 </div>
                 @enderror
             </div>
-        </div><br>
-        <div class="row">
             <div class="col-md-3"> 
                 <div class="form-group">
                 <label> المبلغ</label>
@@ -123,9 +95,8 @@
                 </div>
                 @enderror
             </div>
-        </div>
-        
-    
+        </div><br>
+  
     </div>
     <div class="modal-footer">
     <button type="submit"

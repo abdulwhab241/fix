@@ -27,13 +27,14 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
     {
         $Students = Enrollment::where('year', date("Y"))->get();
         $Grades = Grade::where('year', date("Y"))->get();
-        return view('pages.Fees_Invoices.add',compact('Students','Grades'));
+        $Fees = Fee::where('year', date("Y"))->get();
+        return view('pages.Fees_Invoices.add',compact('Students','Grades','Fees'));
     }
 
     public function edit($id)
     {
         $fee_invoices = FeeInvoice::findOrFail($id);
-        $fees = Fee::where('classroom_id',$fee_invoices->classroom_id)->where('year', date("Y"))->get();
+        $fees = Fee::where('year', date("Y"))->get();
         return view('pages.Fees_Invoices.edit',compact('fee_invoices','fees'));
     }
 
@@ -41,13 +42,22 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
     {
 
         try {
+            $classrooms = Enrollment::where('student_id',strip_tags($request->Student_id))->where('year', date('Y'))->pluck('classroom_id');
+            $grades = Enrollment::where('student_id',strip_tags($request->Student_id))->where('year', date('Y'))->pluck('grade_id');
 
             // حفظ البيانات في جدول فواتير الرسوم الدراسية
             $Fees = new FeeInvoice();
             $Fees->invoice_date = date('Y-m-d');
             $Fees->student_id = strip_tags($request->Student_id);
-            $Fees->grade_id = strip_tags($request->Grade_id);
-            $Fees->classroom_id = strip_tags($request->Classroom_id);
+            
+            foreach ($grades as $grade){
+                $Fees->grade_id = $grade;
+            }
+
+            foreach ($classrooms as $classroom){
+                $Fees->classroom_id = $classroom;
+            }
+
             $Fees->fee_id = strip_tags($request->Fee_id);
             $Fees->amount = strip_tags($request->amount);
             $Fees->description = strip_tags($request->description);
@@ -100,6 +110,7 @@ class FeeInvoicesRepository implements FeeInvoicesRepositoryInterface
             $Fees->amount = strip_tags($request->amount);
             $Fees->description = strip_tags($request->description);
             $Fees->create_by = auth()->user()->name;
+            $Fees->invoice_date = date('Y-m-d');
             $Fees->year = date('Y');
             $Fees->save();
 

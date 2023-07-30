@@ -65,9 +65,9 @@
     </div>
     @else
 <h1 style="margin: 10px; padding:10px; font-weight: bold; text-align: center; background-color:#85A8CF; ">
-    <marquee direction="right">
-        <b style="font-weight: bold; font-size:larger; color:white; margin: 10px;">
-            لا يـوجـد نتـائـج لعـرضـها 
+    <marquee direction="right" style="margin: 10px; padding: 10px;">
+        <b style="font-weight: bold; font-size:larger; color:white; margin: 10px; padding: 20px;">
+            لا يـوجـد نتـائـج شهـريـة لعـرضـها 
         </b>
     </marquee>
     </h1>

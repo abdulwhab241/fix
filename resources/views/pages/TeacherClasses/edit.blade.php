@@ -6,35 +6,35 @@
 @stop
 @endsection
 
-@section('content')
-<!-- Content Header (Page header) -->
-<section class="content-header">
-<h1>
-تعديل جدول حصـص المعلمين 
-</h1>
-<ol class="breadcrumb">
-<li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-<li><a href="{{route('Classes_Teacher.index')}}"><i class="fas fa-books"></i> قائمـة جدول حصـص المعلمين </a></li>
-<li class="active">تعديل جدول حصـص المعلمين </li>
-</ol>
-</section>
 
-<!-- Main content -->
-<section class="content" dir="rtl">
 
+@section('page-header')
+<!-- breadcrumb -->
+<div class="page-title">
 <div class="row">
-<div class="col-xs-12">
-<div class="box">
-@if(session()->has('error'))
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-<strong>{{ session()->get('error') }}</strong>
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-    <span aria-hidden="true">&times;</span>
-</button>
+    <div class="col-sm-6">
+        <h4 class="mb-0">  تعديل جدول حصـص المعلمين</h4>
+    </div>
+    <div class="col-sm-6">
+        <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
+            <li class="breadcrumb-item"><a href="{{ route('dashboard') }}" class="default-color">الرئيسية</a></li>
+            <li class="breadcrumb-item active"> تعديل جدول حصـص المعلمين</li>
+        </ol>
+    </div>
 </div>
-@endif
-</div><!-- /.box-header -->
-
+</div>
+<!-- breadcrumb -->
+@section('PageTitle')
+تعديل جدول حصـص المعلمين
+@stop
+<!-- breadcrumb -->
+@endsection
+@section('content')
+<!-- row -->
+<div class="row">
+<div class="col-md-12 mb-30">
+<div class="card card-statistics h-100">
+<div class="card-body">
 <form  action="{{route('Classes_Teacher.update','test')}}"  method="POST" >
 {{ method_field('patch') }}
 @csrf
@@ -44,7 +44,7 @@
         <div class="form-group">
         <label >الـيوم</label>
         <input type="hidden" name="id" value="{{$TeacherClasses->id}}">
-        <select class="form-control select2" style="width: 100%;" name="Day_id">
+        <select class="form-control form-control-lg" name="Day_id">
             <option > {{ $TeacherClasses->day }} </option>
             <option value="السبت">السبت</option>
             <option value="الاحد">الاحد</option>
@@ -62,7 +62,7 @@
     <div class="col-md-4"> 
         <div class="form-group">
         <label>أسم الأستاذ</label>
-        <select class="form-control select2" style="width: 100%;" name="Teacher_id">
+        <select class="form-control form-control-lg" name="Teacher_id">
             @foreach($Teachers as $Teacher)
             <option
                 value="{{$Teacher->id}}" {{$Teacher->id == $TeacherClasses->teacher_id ?'selected':''}}>{{$Teacher->name }}</option>
@@ -141,10 +141,11 @@ class="btn btn-success btn-block">تعديل البيانات</button>
 
 
 </div>
-</section><!-- /.content -->
-
+</div>
+</div>
+</div>
+<!-- row closed -->
 @endsection
 @section('js')
-@toastr_js
-@toastr_render
+
 @endsection

@@ -61,7 +61,7 @@
                             <div class="col-md-3"> 
                                 <div class="form-group">
                                 <label>نـوع الرسـوم </label>
-                                <select class="form-control select2" name="Fee_id">
+                                <select class="form-control form-control-lg" name="Fee_id">
                                         @foreach($fees as $fee)
                                             <option value="{{$fee->id}}" {{$fee->id == $fee_invoices->fee_id ? 'selected':"" }}>{{$fee->title}}</option>
                                         @endforeach

@@ -6,106 +6,154 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="description" content="مدارس " />
-    <meta name="copyright" content="Abdulwhab Mohammed" />
     <meta name="keywords" content="HTML5 Template" />
-    {{-- <meta name="description" content="Webmin - Bootstrap 4 & Angular 5 Admin Dashboard Template" /> --}}
-    <meta name="author" content="potenzaglobalsolutions.com" />
+    <meta name="description" content="برنامج عبدالوهاب لإدارة المدارس " />
+    <meta name="copyright" content="Abdulwhab Mohammed" />
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
     @include('layouts.head')
-    {{-- @livewireStyles --}}
 </head>
 
-<body class="skin-blue sidebar-mini" dir="rtl">
-
-    <div class="wrapper">
-
-<!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper">
-
-    @include('layouts.header')
-
-    @include('layouts.main-sidebar')
-
-<!-- Content Header (Page header) -->
-<section class="content-header" style="font-family: 'Cairo', sans-serif">
-<h1  style="font-family: 'Cairo', sans-serif">
-    صـفـحـة الأستـاذ :        <span>   {{ auth()->user()->name }}</span>
-</h1>
-
-</section>
-
-<!-- Main content -->
-<section class="content">
-<!-- Small boxes (Stat box) -->
-<div class="row">
-    <div class="col-lg-3 col-xs-3">
-        <!-- small box -->
-        <div class="small-box bg-yellow">
-        <div class="inner">
-            <h4>عـدد الطـلاب</h4>
-            <p>{{$count_students}}</p>
-        </div>
-        <div class="icon">
-            <i class="fas fa-user-graduate highlight-icon" aria-hidden="true"></i>
-        </div>
-        <a href="{{route('student.index')}}" class="small-box-footer">عـرض البيـانـات <i class="fa fa-arrow-circle-left"></i></a>
-        </div>
-    </div><!-- ./col -->
-    <div class="col-lg-3 col-xs-3">
-    <!-- small box -->
-    <div class="small-box bg-aqua">
-    <div class="inner">
-        <h4>عـدد الاقسـام</h4>
-        <p>{{$count_sections}}</p>
-    </div>
-    <div class="icon">
-        <i class="fas fa-chalkboard" aria-hidden="true"></i>
-    </div>
-    <a href="{{route('sections')}}" class="small-box-footer">عـرض البيـانـات <i class="fa fa-arrow-circle-left"></i></a>
-    </div>
-</div><!-- ./col -->
-
-<div class="col-lg-3 col-xs-3">
-    <!-- small box -->
-    <div class="small-box bg-#D0DEF6">
-    <div class="inner">
-        <h4>عـدد الـصـفـوف الـدراسـيـة</h4>
-        <p>{{$count_classrooms}}</p>
-    </div>
-    <div class="icon">
-        <i class="fa fa-building" aria-hidden="true"></i>
-    </div>
-    <a href="{{route('TeacherClassrooms')}}" class="small-box-footer">عـرض البيـانـات <i class="fa fa-arrow-circle-left"></i></a>
-    </div>
-</div><!-- ./col -->
-
-<div class="col-lg-3 col-xs-3">
-    <!-- small box -->
-    <div class="small-box bg-green">
-    <div class="inner">
-        <h4>عـدد المـواد الـدراسـيـة</h4>
-        <p>{{$count_subjects}}</p>
-    </div>
-    <div class="icon">
-        <i class="fa fa-book" aria-hidden="true"></i>
-    </div>
-    <a href="{{route('Subjects_Teacher')}}" class="small-box-footer">عـرض البيـانـات <i class="fa fa-arrow-circle-left"></i></a>
-    </div>
-</div><!-- ./col -->
+<body style="font-family: 'Cairo', sans-serif;">
 
 
-</div><!-- /.row -->
-<!-- Main row -->
+<div class="wrapper">
 
-</section><!-- /.content -->
+<!--=================================
+preloader -->
+
+<div id="pre-loader">
+<img src="/assets/images/pre-loader/loader-01.svg" alt="">
 </div>
+
+<!--=================================
+preloader -->
+
+@include('layouts.header')
+
+@include('layouts.main-sidebar')
+
+<!--=================================
+Main content -->
+<!-- main-content -->
+<div class="content-wrapper">
+<div class="page-title">
+<div class="row">
+<div class="col-sm-6">
+    <h4 class="mb-0" style="font-family: 'Cairo', sans-serif">
+        لـوحـة تحـكـم الأستـاذ : <label style="color: #5686E0"> {{auth()->user()->name}} </label>   
+</h4>
+</div>
+<div class="col-sm-6">
+    <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right">
+    </ol>
+</div>
+</div>
+</div><br><br>
+<!-- widgets -->
+<div class="row">
+    <div class="col-xl-3 col-lg-6 col-md-6 mb-30">
+    <div class="card card-statistics h-100">
+        <div class="card-body">
+            <div class="clearfix">
+                <div class="float-left">
+                        <span class="text-success">
+                            <i class="fas fa-user-graduate highlight-icon" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="float-right text-right">
+                    <p class="card-text text-dark">عدد الطلاب</p>
+                    <h4>{{$count_students}}</h4>
+                </div>
+            </div>
+            <p class="text-muted pt-3 mb-0 mt-2 border-top">
+                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{route('student.index')}}" target="_blank"><span class="text-danger">عرض البيانات</span></a>
+            </p>
+        </div>
+    </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 mb-30">
+    <div class="card card-statistics h-100">
+        <div class="card-body">
+            <div class="clearfix">
+                <div class="float-left">
+                    <span class="text-warning">
+                        <i class="fas fa-chalkboard highlight-icon" aria-hidden="true"></i>                                    </span>
+                </div>
+                <div class="float-right text-right">
+                    <p class="card-text text-dark">عـدد الاقسـام</p>
+                    <h4>{{$count_sections}}</h4>
+                </div>
+            </div>
+            <p class="text-muted pt-3 mb-0 mt-2 border-top">
+                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{route('sections')}}" target="_blank"><span class="text-danger">عرض البيانات</span></a>
+            </p>
+        </div>
+    </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 mb-30">
+    <div class="card card-statistics h-100">
+        <div class="card-body">
+            <div class="clearfix">
+                <div class="float-left">
+                    <span class="text-success">
+                        <i class="fa fa-building highlight-icon" aria-hidden="true"></i>                                    </span>
+                </div>
+                <div class="float-right text-right">
+                    <p class="card-text text-dark">عـدد الـصـفـوف الـدراسـيـة</p>
+                    <h4>{{$count_classrooms}}</h4>            
+                </div>
+            </div>
+        
+            <p class="text-muted pt-3 mb-0 mt-2 border-top">
+                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{route('TeacherClassrooms')}}" target="_blank"><span class="text-danger">عرض البيانات</span></a>
+            </p>
+        </div>
+    </div>
+    </div>
+    <div class="col-xl-3 col-lg-6 col-md-6 mb-30">
+    <div class="card card-statistics h-100">
+        <div class="card-body">
+            <div class="clearfix">
+                <div class="float-left">
+                    <span class="text-primary">
+                        <i class="fa fa-book highlight-icon" aria-hidden="true"></i>
+                    </span>
+                </div>
+                <div class="float-right text-right">
+                    <p class="card-text text-dark">عـدد المـواد الـدراسـيـة</p>
+                    <h4>{{$count_subjects}}</h4>
+                </div>
+            </div>
+            <p class="text-muted pt-3 mb-0 mt-2 border-top">
+                <i class="fas fa-binoculars mr-1" aria-hidden="true"></i><a href="{{route('Subjects_Teacher')}}" target="_blank"><span class="text-danger">عرض البيانات</span></a>
+            </p>
+        </div>
+    </div>
+    </div>
+    </div>
+
+
+
+<!--=================================
+wrapper -->
+
+<!--=================================
+footer -->
+
 @include('layouts.footer')
-</div><!-- /.content-wrapper -->
+</div><!-- main content wrapper end-->
+</div>
+
+
+
+<!--=================================
+footer -->
 
 @include('layouts.footer-scripts')
+
+
 
 
 </body>

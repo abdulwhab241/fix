@@ -22,8 +22,6 @@ class FeeInvoiceRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'Grade_id' => 'required|integer',
-            'Classroom_id' => 'required|integer',
             'Student_id' => 'required|integer',
             'description' => 'required',
             'Fee_id' => 'required|integer',

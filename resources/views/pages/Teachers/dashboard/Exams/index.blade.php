@@ -6,87 +6,86 @@
 @stop
 @endsection
 
-@section('content')
 
-<!-- Content Header (Page header) -->
-<section class="content-header">
-<h1>
-قائمة الأختبـارات
-</h1>
-<ol class="breadcrumb">
-<li><a href="{{ url('/teacher/dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-
-<li class="active">قائمة الأختبـارات</li>
-</ol>
-</section>
-
-<!-- Main content -->
-<section class="content">
-
-<div class="row">
-<div class="col-xs-12">
-<div class="box">
-@if ($errors->any())
-<div class="alert alert-danger">
-<ul>
-@foreach ($errors->all() as $error)
-<li>{{ $error }}</li>
-@endforeach
-</ul>
+@section('page-header')
+<!-- breadcrumb -->
+<div class="page-title">
+    <div class="row">
+        <div class="col-sm-6">
+            <h4 class="mb-0">    قائمة الأختبـارات</h4>
+        </div>
+        <div class="col-sm-6">
+            <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
+                <li class="breadcrumb-item"><a href="{{ url('/teacher/dashboard') }}" class="default-color">الرئيسية</a></li>
+                <li class="breadcrumb-item active">   قائمة الأختبـارات</li>
+            </ol>
+        </div>
+    </div>
 </div>
-@endif
-<div class="box-header">
-<button type="button" class="btn btn-success btn-flat" data-toggle="modal" data-target="#exampleModal">
-اضافة إختبـار
+<!-- breadcrumb -->
+@section('PageTitle')
+    قائمة الأختبـارات
+@stop
+<!-- breadcrumb -->
+@endsection
+@section('content')
+<!-- row -->
+<div class="row">
+<div class="col-md-12 mb-30">
+<div class="card card-statistics h-100">
+<div class="card-body">
+<div class="col-xl-12 mb-30">
+<div class="card card-statistics h-100">
+<div class="card-body">
+
+<button type="button" style="margin: 5px; padding: 5px;" class="btn btn-success btn-sm" data-toggle="modal" data-target="#exampleModal">
+    اضافة إختبـار
 </button>
 <br><br>
-</div>
+<div class="table-responsive">
+    <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
+            data-page-length="50"
+            style="text-align: center">
+        <thead>
+        <tr class="alert-success">
+            <th style="text-align: center; background-color: yellow; font-weight:bolder;" >أختـبار شهـر</th>
+            <th style="text-align: center;  background-color: #D0DEF6;" > المـادة</th>
+            <th style="text-align: center;  background-color: #D0DEF6;" >الصـف الدراسـي </th>
+            <th style="text-align: center;  background-color: #D0DEF6;" >الأستـاذ </th>
+            <th style="text-align: center; background-color: #D0DEF6;">الـدرجـة</th>
+            <th style="text-align: center;" class="alert-warning">العمليـات</th>
+        </tr>
+        </thead>
+        <tbody>
+            @foreach($exams as $exam)
+            <tr>
+                <td style="background-color: yellow; font-weight:bolder;">{{ $exam->month->name }}</td>
+                <td>{{$exam->subject->name}}</td>
+                <td>{{$exam->classroom->name_class}}</td>
+                <td>{{$exam->teacher->name}}</td>
+                <td>{{$exam->total_marks}}</td>
+                <td>
+                    <div class="btn-group">
+                    <button type="button" style="margin: 3px;" class="btn btn-info btn-sm" data-toggle="modal"
+                    data-target="#edit{{ $exam->id }}"
+                    title="تعديل">تعديل</button>
+                    <button type="button" style="margin: 3px;" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Exam{{ $exam->id }}" title="حذف">حذف</button>
+                    </div>
+                </td>
+            </tr>
 
-<div class="box-body">
-<div class="box-body table-responsive no-padding">
-<table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
-<thead>
-<tr>
-<th style="text-align: center; background-color: yellow; font-weight:bolder;" >أختـبار شهـر</th>
-<th style="text-align: center;  background-color: #D0DEF6;" > المـادة</th>
-<th style="text-align: center;  background-color: #D0DEF6;" >الصـف الدراسـي </th>
-<th style="text-align: center;  background-color: #D0DEF6;" >الأستـاذ </th>
-<th style="text-align: center; background-color: #D0DEF6;">الـدرجـة</th>
-<th style="text-align: center;" class="alert-warning">العمليـات</th>
-
-</tr>
-</thead>
-<tbody>
-
-@foreach($exams as $exam)
-    <tr>
-        <td style="background-color: yellow; font-weight:bolder;">{{ $exam->month->name }}</td>
-        <td>{{$exam->subject->name}}</td>
-        <td>{{$exam->classroom->name_class}}</td>
-        <td>{{$exam->teacher->name}}</td>
-        <td>{{$exam->total_marks}}</td>
-        <td>
-            <div class="btn-group">
-            <button type="button" style="margin: 3px;" class="btn btn-info btn-sm" data-toggle="modal"
-            data-target="#edit{{ $exam->id }}"
-            title="تعديل"><i class="fa fa-edit"></i></button>
-            <button type="button" style="margin: 3px;" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_Exam{{ $exam->id }}" title="حذف"><i class="fa fa-trash"></i></button>
-            </div>
-        </td>
-    </tr>
-
-    
+                
     <!-- edit_modal_Grade -->
 <div class="modal fade" id="edit{{ $exam->id }}" tabindex="-1" role="dialog"
 aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-primary" role="document">
 <div class="modal-content">
 <div class="modal-header">
-<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title"
 id="exampleModalLabel">
 تعديل إختبـار {{$exam->subject->name}}
 </h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 </div>
 <div class="modal-body">
 <!-- add_form -->
@@ -100,7 +99,7 @@ id="exampleModalLabel">
         <label>الصـف الدراسي</label>
         <input id="id" type="hidden" name="id" class="form-control"
         value="{{ $exam->id }}">
-        <select class="form-control select2" style="width: 100%;" name="Classroom_id">
+        <select class="form-control form-control-lg" name="Classroom_id">
             <option value="{{ $exam->classroom->id }}">
                 {{ $exam->classroom->name_class }}
             </option>
@@ -114,7 +113,7 @@ id="exampleModalLabel">
 
     <div class="col-md-6"> 
         <label>المـادة</label>
-        <select class="form-control select2" style="width: 100%;" name="Subject_id">
+        <select class="form-control form-control-lg" name="Subject_id">
             <option value="{{ $exam->subject->id }}">
                 {{ $exam->subject->name }}
             </option>
@@ -132,7 +131,7 @@ id="exampleModalLabel">
 
     <div class="col-md-6"> 
         <label>أختـبار شـهر</label>
-        <select class="form-control select2" style="width: 100%;" name="Exam_Date">
+        <select class="form-control form-control-lg" name="Exam_Date">
         <option value="{{ $exam->month_id }}"> {{ $exam->month->name }} </option>
         @foreach ($Months as $Month)
             <option value="{{ $Month->id }}">
@@ -160,6 +159,7 @@ class="btn btn-info btn-block">تـعديـل البيانات</button>
 </div>
 </div>
 
+
 <!-- Delete modal -->
 <div class="modal fade" id="delete_Exam{{$exam->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-danger" role="document">
@@ -168,9 +168,8 @@ class="btn btn-info btn-block">تـعديـل البيانات</button>
 {{csrf_field()}}
 <div class="modal-content">
 <div class="modal-header">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">حـذف إختبـار</h5>
-
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 </div>
 <div class="modal-body">
     <p> هل انت متاكد من عملية حذف إختبـار مـادة </p>
@@ -185,29 +184,28 @@ class="btn btn-info btn-block">تـعديـل البيانات</button>
     <button type="button" class="btn btn-outline"
             data-dismiss="modal">إغلاق</button>
     <button type="submit"
-            class="btn btn-outline">حذف البيانات</button>
+            class="btn btn-danger">حذف البيانات</button>
 </div>
 </div>
 </form>
 </div>
 </div>
 
-@endforeach
-</tbody>
-</table>
-</div>
-</div>
+            @endforeach
+        </tbody>
+        </table>
+    </div>
 
-<!-- add_modal_class -->
+    <!-- add_modal_class -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
 aria-hidden="true">
 <div class="modal-dialog modal-primary" role="document">
 <div class="modal-content">
 <div class="modal-header">
+    <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
+        اضافة إختبـار
+    </h5>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-<h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">
-اضافة إختبـار
-</h5>
 </div>
 <div class="modal-body">
 
@@ -219,7 +217,7 @@ aria-hidden="true">
 
     <div class="col-md-6"> 
         <label>الصـف الدراسي</label>
-        <select class="form-control select2" style="width: 100%;" name="Classroom_id">
+        <select class="form-control form-control-lg" name="Classroom_id">
             <option  selected disabled>أختـر من القائمة...</option>
             @foreach ($Classrooms as $Classroom)
                 <option  value="{{ $Classroom->My_Classes->id }}" >{{ $Classroom->My_Classes->name_class }}</option>
@@ -229,7 +227,7 @@ aria-hidden="true">
 
     <div class="col-md-6"> 
         <label>المـادة</label>
-        <select class="form-control select2" style="width: 100%;" name="Subject_id">
+        <select class="form-control form-control-lg" name="Subject_id">
             <option  selected disabled>حدد المادة الدراسية...</option>
             @foreach ($subjects as $subject)
                 <option  value="{{ $subject->subject_id }}" >{{ $subject->subject->name }}</option>
@@ -242,7 +240,7 @@ aria-hidden="true">
 <div class="row">
     <div class="col-md-6"> 
         <label>أختـبار شـهر</label>
-        <select class="form-control select2" style="width: 100%;" name="Exam_Date">
+        <select class="form-control form-control-lg" name="Exam_Date">
         <option  selected disabled>أختـر من القائمة...</option>
         @foreach ($Months as $Month)
             <option value="{{ $Month->id }}">
@@ -271,14 +269,15 @@ aria-hidden="true">
 </div>
 </div>
 
-
 </div>
 </div>
 </div>
-</section>
-
+</div>
+</div>
+</div>
+</div>
+<!-- row closed -->
 @endsection
 @section('js')
-@toastr_js
-@toastr_render
+
 @endsection

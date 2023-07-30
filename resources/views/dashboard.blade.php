@@ -105,8 +105,6 @@ Main content -->
             <div class="float-right text-right">
                 <p class="card-text text-dark">عـدد الفواتير الـدراسيـة</p>
                 <h4>{{App\Models\FeeInvoice::count()}}</h4>
-                <h4></h4>
-                <p></p>
             </div>
         </div>
     
