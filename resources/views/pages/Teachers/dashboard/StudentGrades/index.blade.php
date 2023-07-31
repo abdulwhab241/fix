@@ -149,7 +149,7 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة كشـف ال�
 </div>
 
 <div class="footer">
-    <a href="{{ route('Teacher_Grades.print',$Classroom->id) }}" style="margin: 10px; padding:5px;" class="btn .btn.bg-navy  pull-left">
+    <a href="{{ route('Teacher_Grades.print',$Classroom->id) }}" style="margin: 10px; padding:5px;" class="btn btn-info pull-left">
         <i class="fa fa-print" aria-hidden="true"></i>  طبـاعـة  </a>
 </div>
 

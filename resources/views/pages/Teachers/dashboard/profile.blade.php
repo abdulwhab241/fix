@@ -85,8 +85,13 @@
     
             <div class="form-group">
                 <label class=" control-label">كلمـة المـرور</label>
-                
-                    <input type="text" required class="form-control" id="password" name="password">
+                    <input  type="password" required
+                    style="font-weight: bolder; font-size: 20px; background-color: #D0DEF6;" class="form-control" id="password" name="password">
+            </div>
+            <div class="form-group text-center">
+                <input type="checkbox" class="form-check-input" onclick="myFunction()"
+                id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">اظهار كلمة المرور</label>
             </div>
         <br>
     </div>
@@ -111,13 +116,13 @@
 @section('js')
 
 <script>
-function myFunction() {
-    var x = document.getElementById("password");
-    if (x.type === "password") {
-        x.type = "text";
-    } else {
-        x.type = "password";
+    function myFunction() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+            x.type = "text";
+        } else {
+            x.type = "password";
+        }
     }
-};
 </script>
 @endsection

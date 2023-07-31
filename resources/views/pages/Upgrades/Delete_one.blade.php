@@ -3,8 +3,8 @@
     <div class="modal-dialog modal-warning">
         <div class="modal-content">
             <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h5 style="font-family: 'Cairo', sans-serif;" class="modal-title" id="exampleModalLabel">إرجـاع طالـب</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
                 <form action="{{route('Upgrades.destroy','test')}}" method="post">
@@ -20,7 +20,7 @@
                     disabled>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline" data-dismiss="modal">إغـلاق</button>
-                        <button  class="btn btn-outline">تاكيـد</button>
+                        <button  class="btn btn-danger">تاكيـد</button>
                     </div>
                 </form>
             </div>
