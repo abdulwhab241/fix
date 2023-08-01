@@ -12,7 +12,7 @@
 <div class="page-title">
     <div class="row">
         <div class="col-sm-6">
-            <h4 class="mb-0">    نتيجـة الطـالـب   <label style="color: #5686E0">{{ $Name->mid->student->name }} </label> </h4>
+            <h4 class="mb-0">    نتيجـة الطـالـب   <label style="color: #5686E0">{{ $Name->student->name }} </label> </h4>
         </div>
         <div class="col-sm-6">
             <ol class="breadcrumb pt-0 pr-0 float-left float-sm-right ">
@@ -184,11 +184,17 @@
 
     @php $total = 0; @endphp
     @php
-
+        
         $sub_total = round($All / $FinalResults->count('subject_id'),2 );
         $total += $sub_total;
     @endphp
-    <th style="text-align: center; background-color: #D0DEF6;" colspan="1">{{ $sub_total }} %</th>
+
+    @if ($FinalResults->count('subject_id') == 7 | $FinalResults->count('subject_id')  == 7)
+        <th style="text-align: center; background-color: #D0DEF6;" colspan="1">{{ $sub_total }} %</th>
+    @else
+        <th style="text-align: center; background-color: #D0DEF6;" colspan="1">0</th>
+    @endif
+
 
 </tr>
 </tfoot>

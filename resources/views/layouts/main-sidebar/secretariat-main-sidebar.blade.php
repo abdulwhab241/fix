@@ -21,6 +21,19 @@
             <a href="{{ route('Enrollments.index') }}"><i class="fa fa-sign-in"></i><span class="right-nav-text">تسجيل الطلاب</span></a>
         </li>
 
+        <!-- Subjects-->
+        <li>
+            <a href="javascript:void(0);" data-toggle="collapse" data-target="#Subjects">
+                <div class="pull-left"><i class="fas fa-book-open"></i><span class="right-nav-text">المواد الدراسية</span></div>
+                <div class="pull-right"><i class="ti-plus"></i></div>
+                <div class="clearfix"></div>
+            </a>
+            <ul id="Subjects" class="collapse" data-parent="#sidebarnav">
+                <li> <a href="{{route('Subjects.index')}}">قائمة المواد الدراسية</a> </li>
+                <li><a href="{{route('TeacherSubjects.index')}}"> قائمة مواد المعلمين</a></li>
+            </ul>
+        </li>
+
         <!-- Classes-->
         <li>
             <a href="javascript:void(0);" data-toggle="collapse" data-target="#Classes">

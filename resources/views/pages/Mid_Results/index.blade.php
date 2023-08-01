@@ -100,7 +100,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
             </div>
             <div class="modal-body">
-                <p> هل انت متاكد من عملية حذف نتيـجـة  الـمادة </p>
+                <p> هل انت متاكد من عملية حذف نتيـجـة الترم الأول للـمادة </p>
                 <input type="hidden" name="id"  value="{{$MidResult->id}}">
                 <input  type="text" style="font-weight: bolder; font-size:20px;"
                 name="Name_Section"

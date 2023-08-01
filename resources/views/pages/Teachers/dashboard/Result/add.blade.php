@@ -78,9 +78,9 @@
 <label>المـادة</label>
 <select class="form-control form-control-lg" name="Exam_id">
     <option  selected disabled>أختـر من القائمة...</option>
-    @foreach ($exams as $Exam)
-        <option value="{{ $Exam->subject_id }}">
-            {{ $Exam->subject->name }}
+    @foreach ($subjects as $subject)
+        <option value="{{ $subject->subject_id }}">
+            {{ $subject->subject->name }}
         </option>
     @endforeach
 </select>

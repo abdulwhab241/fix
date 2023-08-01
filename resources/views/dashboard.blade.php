@@ -319,6 +319,10 @@ Main content -->
 </div>
 </div>
 </div>
+@else
+<div class="row" style="margin-bottom: 20%;">
+
+</div>
 @endif
 
 

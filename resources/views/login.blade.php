@@ -48,12 +48,15 @@ style="background-image: url('{{ asset('assets/images/school.jpg')}}'); padding:
     @else
         <h3 style="font-family: 'Cairo', sans-serif; font-weight: bolder;" class="mb-40">تسجيل دخول ادمن</h3>
     @endif 
-    <h5 class="text-center">مرحباً بـك في مـدارس </h5>
-    <p class="text-center" style="margin: 5px;">إذا كنت مسجل بنظام المدرسة يمكنك تسجيل اسمك ,<br />
-         وكلمة المرور  رقم الهاتف 
+    <h5 class="text-center" style="color: cornflowerblue; font-weight: bolder; margin: 5px;">مرحباً بـك في مـدارس .............. الأهلية </h5>
+    <marquee direction="right"  scrollamount="3">
+        <p class="text-center" style="margin: 5px; font-size:15px; font-weight: bolder; color:cornflowerblue;">إذا كنت مسجل بنظام المدرسة يمكنك تسجيل اسمك ,<br />
+            وكلمة المرور  رقم هـاتـفـك 
         
-    </p><br><br>
-<form method="POST" action="{{route('login')}}">
+    </p>
+        </marquee>
+   <br><br>
+<form method="POST"  action="{{route('login')}}">
     @csrf
 
 <div class="form-group">

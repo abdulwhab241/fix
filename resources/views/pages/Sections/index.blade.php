@@ -31,13 +31,15 @@
 @section('content')
 <!-- row -->
 <div class="row">
-<div class="col-md-12 mb-30">
-<div class="card card-statistics h-100">
-<div class="card-body">
+    <div class="col-md-12 mb-30">
+    <div class="card card-statistics h-100">
+    <div class="card-body">
+    <div class="col-xl-12 mb-30">
+    <div class="card card-statistics h-100">
+    <div class="card-body">
 <a class="btn btn-success btn-sm" href="#" data-toggle="modal" style="padding:5px; margin: 5px;" data-target="#exampleModal">
 اضافة قسـم</a>
-</div>
-
+<br><br>
 @if ($errors->any())
 <div class="alert alert-danger alert-dismissible fade show" role="alert">
 <ul>
@@ -50,6 +52,7 @@
 </button>
 </div>
 @endif
+
 
 <div class="card card-statistics h-100">
 <div class="card-body">
@@ -242,6 +245,16 @@ disabled style="text-align: center; font-weidth:bolder; font-size:20px;">
 </div>
 </div>
 </div>
+</div>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
 
 <!--اضافة قسم جديد -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
@@ -317,10 +330,6 @@ class="btn btn-success btn-block">حفظ البيانات</button>
 </div>
 </div>
 
-</div>
-
-</div>
-</div>
 </div>
 <!-- row closed -->
 

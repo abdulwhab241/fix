@@ -65,8 +65,9 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة مستخدم �
             
                 <td>
                     <div class="btn-group">
-                    <a href="{{route('Users.edit',$User->id)}}" style="margin: 3px;" class="btn btn-info btn-sm" title="تعديل" role="button" aria-pressed="true">تعديل</a>
-                    {{-- <button type="button" class="btn btn-danger btn-sm" style="margin: 3px;" data-toggle="modal" data-target="#delete_User{{ $User->id }}" title="حذف"><i class="fa fa-trash"></i></button> --}}
+                        <a href="#" style="margin: 3px;" class="btn btn-info btn-sm" title="تعديل" role="button" aria-pressed="true">تعديل</a>
+                    {{-- <a href="{{route('Users.edit',$User->id)}}" style="margin: 3px;" class="btn btn-info btn-sm" title="تعديل" role="button" aria-pressed="true">تعديل</a>
+                    <button type="button" class="btn btn-danger btn-sm" style="margin: 3px;" data-toggle="modal" data-target="#delete_User{{ $User->id }}" title="حذف"><i class="fa fa-trash"></i></button> --}}
                     </div>
                 </td>
             </tr>

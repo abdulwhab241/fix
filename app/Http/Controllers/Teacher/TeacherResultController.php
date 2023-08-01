@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ResultRequest;
+use App\Models\TeacherSubject;
 use App\Notifications\ResultNotification;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\Teacher\TeacherResultNotification;
@@ -22,24 +23,24 @@ class TeacherResultController extends Controller
 {
     public function index()
     { 
-        $exams = Exam::distinct()->where('teacher_id',auth()->user()->id)->where('year', date("Y"))->get(['subject_id']);
+        $subjects = TeacherSubject::where('teacher_id',auth()->user()->id)->where('year', date("Y"))->get();
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
         $results = Section::with(['Results'])->whereIn('id', $ids)->where('year',date('Y'))->get();
         $Months = Month::all();
         $Semesters = Semester::all();
 
-        return view('pages.Teachers.dashboard.Result.index', compact('exams','results','Months','Semesters'));
+        return view('pages.Teachers.dashboard.Result.index', compact('subjects','results','Months','Semesters'));
     }
 
     public function create()
     {
-        $exams = Exam::distinct()->where('teacher_id',auth()->user()->id)->where('year', date("Y"))->get(['subject_id']);
+        $subjects = TeacherSubject::where('teacher_id',auth()->user()->id)->where('year', date("Y"))->get();
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
         $students= Enrollment::whereIn('section_id', $ids)->where('year', date("Y"))->get();
         $Semesters = Semester::all();
         $Months = Month::all();
 
-        return view('pages.Teachers.dashboard.Result.add', compact('exams','students','Semesters','Months'));
+        return view('pages.Teachers.dashboard.Result.add', compact('subjects','students','Semesters','Months'));
     }
 
     public function print($id)

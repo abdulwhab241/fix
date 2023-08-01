@@ -86,18 +86,20 @@ aria-pressed="true">اضافة كشـف الـدرجـات</a>
             
             
             <td>
-                <div class="input-group-btn">
-                    <button type="button" class="btn btn-navy dropdown-toggle" data-toggle="dropdown">العمليـات <span class="fa fa-caret-down"></span></button>
-                    <ul class="dropdown-menu">
-                    <li><a href="{{route('Student_Grades.edit',$Student_Grade->id)}}">تـعديـل</a></li>
-                    <li><a data-toggle="modal" data-target="#delete_Student_Grades{{ $Student_Grade->id }}">حـذف</a></li>
-                </ul>
+                <div class="dropdown show">
+                    <a class="btn btn-info btn-sm dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        العمليات
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" href="{{route('Student_Grades.edit',$Student_Grade->id)}}">تـعديـل</a>
+                        <a class="dropdown-item btn" data-toggle="modal" data-target="#delete_Student_Grades{{ $Student_Grade->id }}">حـذف</a>
+                    </div>
                 </div><!-- /btn-group -->
             </td>
             </tr>
 
             <div class="modal fade" id="delete_Student_Grades{{$Student_Grade->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-danger" role="document">
+                <div class="modal-dialog" role="document">
                     <form action="{{route('Student_Grades.destroy','test')}}" method="post">
                         {{method_field('delete')}}
                         {{csrf_field()}}

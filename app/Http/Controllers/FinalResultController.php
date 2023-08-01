@@ -46,7 +46,7 @@ class FinalResultController extends Controller
 
         $Mid_Results = $FinalResults = MidResult::where('student_id', strip_tags($request->Student_id))->where('year', date('Y'))->get();
         $FinalResults = FinalResult::where('student_id', strip_tags($request->Student_id))->where('year', date('Y'))->get();
-        $Name = FinalResult::where('mid_id', strip_tags($request->Student_id))->where('year', date('Y'))->first();
+        $Name = FinalResult::where('student_id', strip_tags($request->Student_id))->where('year', date('Y'))->first();
         return view('pages.Final_Result.show', compact('FinalResults','Name','Mid_Results'));
     }
 
@@ -164,11 +164,11 @@ class FinalResultController extends Controller
             $Mids = MidResult::where('student_id',strip_tags($request->Student_id))
             ->where('subject_id', strip_tags($request->Subject_id))->where('year', date('Y'))->pluck('id');
 
-            if($Mids->count() == 0)
-            {
-                toastr()->error('عـذاً هـذا الـطالـب لا تـوجد لـه محصـلة للـترم الأول الرجاء إضافة محصلة للترم الاول لـهذي المادة');
-                return redirect()->back();
-            }
+            // if($Mids->count() == 0)
+            // {
+            //     toastr()->error('عـذاً هـذا الـطالـب لا تـوجد لـه محصـلة للـترم الأول الرجاء إضافة محصلة للترم الاول لـهذي المادة');
+            //     return redirect()->back();
+            // }
 
             $Degree = StudentResult::where('student_id',strip_tags($request->Student_id))
             ->where('subject_id',strip_tags($request->Subject_id))

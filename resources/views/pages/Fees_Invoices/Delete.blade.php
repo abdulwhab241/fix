@@ -11,7 +11,7 @@
                     @csrf
                     @method('DELETE')
                     <input type="hidden" name="id" value="{{ $Fee_invoice->id }}">
-                    <h5 style="font-family: 'Cairo', sans-serif;">هل انت متاكد مع عملية حـذ فـاتـورة الطـالـب ؟</h5>
+                    <h5 style="font-family: 'Cairo', sans-serif;">هل انت متاكد مع عملية حـذف فـاتـورة الطـالـب ؟</h5>
                     <input id="Name" type="text" name="Name"
                     class="form-control"
                     value="{{ $Fee_invoice->student->name }}" style="font-weight: bolder; text-align: center; font-size:20px;"

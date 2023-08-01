@@ -124,7 +124,8 @@
                         <div class="col-md-3">
                             <label>التخـفيـض</label>
                             <select class="form-control form-control-lg" name="Discount">
-                                <option value="0">أختـر من القائمة...</option>
+                                <option selected disabled>أختـر من القائمة...</option>
+                                <option value="0">0%</option>
                                 <option value="5">5%</option>
                                 <option value="10">10%</option>
                                 <option value="15">15%</option>

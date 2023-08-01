@@ -50,6 +50,7 @@
         <div class="box-header">
         <form  action="{{route('attendance.search')}}"  method="POST" >
             @csrf
+            <h6 class="text-center" style="font-family: 'Cairo', sans-serif;color: blue">معلومات البحث</h6><br>
             <div class="box-body">
                 <div class="row">
                     <div class="col-md-4"> 
@@ -63,11 +64,11 @@
                     </div>
                     <div class="col-md-4">
                         <label>مـن تـاريـخ</label>
-                        <input type="date" required data-date-format="yyyy-mm-dd" name="from" class="form-control">
+                        <input type="text"  class="form-control range-from date-picker-default" placeholder="تاريخ البداية" required name="from">
                     </div>
                     <div class="col-md-4">
                         <label>إلـى تـاريـخ</label>
-                        <input type="date" required data-date-format="yyyy-mm-dd" name="to" class="form-control">
+                        <input class="form-control range-to date-picker-default"  placeholder="تاريخ النهاية" type="text" required name="to">
                     </div>
                 </div><br>
             

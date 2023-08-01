@@ -168,9 +168,9 @@ id="exampleModalLabel">
             <option value="{{ $Result->exam_id }}">
                 {{ $Result->exam->subject->name }}
             </option>
-            @foreach ($exams as $Exam)
-            <option value="{{ $Exam->subject_id }}">
-                {{ $Exam->subject->name }}
+            @foreach ($subjects as $subject)
+            <option value="{{ $subject->subject_id }}">
+                {{ $subject->subject->name }}
             </option>
         @endforeach
         </select>
@@ -261,6 +261,7 @@ class="btn btn-info btn-block">تـعديـل البيانات</button>
 </div>
 
 
+</div>
 </div>
 </div>
 </div>

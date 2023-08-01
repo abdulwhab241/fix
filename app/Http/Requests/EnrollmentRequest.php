@@ -25,7 +25,7 @@ class EnrollmentRequest extends FormRequest
             'Grade_id' => 'required|integer',
             'Classroom_id' => 'required|integer',
             'Section_id' => 'required|integer',
-            'Year' => 'required',
+            'Year' => 'required|integer',
         ];
     }
 }

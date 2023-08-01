@@ -23,6 +23,7 @@ class FeeRequest extends FormRequest
     {
         return [
             'title' => 'required',
+            'Fee_type' => 'required',
             'amount' => 'required|numeric',
             'Grade_id' => 'required|integer',
             'Classroom_id' => 'required|integer',

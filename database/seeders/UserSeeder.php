@@ -23,5 +23,19 @@ class UserSeeder extends Seeder
             'phone_number' => '1234',
             'password' => Hash::make('1234'),
         ]);
+        DB::table('users')->insert([
+            'name' => 'محاسب',
+            'address' => 'محاسب',
+            'job' => 'محاسب',
+            'phone_number' => '1234',
+            'password' => Hash::make('1234'),
+        ]);
+        DB::table('users')->insert([
+            'name' => 'سكرتارية',
+            'address' => 'سكرتارية',
+            'job' => 'سكرتارية',
+            'phone_number' => '1234',
+            'password' => Hash::make('1234'),
+        ]);
     }
 }

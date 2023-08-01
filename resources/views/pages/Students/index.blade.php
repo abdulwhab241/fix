@@ -82,7 +82,7 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة طـالـب</
                             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="{{route('Students.show',$Student->id)}}" >عـرض بيـانـات الطـالب</a>
                             <a class="dropdown-item" href="{{route('Students.edit',$Student->id)}}">تـعديـل</a>
-                            <a class="dropdown-item" data-toggle="modal" data-target="#delete_Student{{ $Student->id }}">حـذف</a>
+                            <a class="dropdown-item btn" data-toggle="modal" data-target="#delete_Student{{ $Student->id }}">حـذف</a>
                             </div>
                         </div><!-- /btn-group -->
                     </td>

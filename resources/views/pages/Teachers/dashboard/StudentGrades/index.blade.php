@@ -171,6 +171,7 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة كشـف ال�
 </div>
 </div>
 </div>
+</div>
 <!-- row closed -->
 @endsection
 @section('js')
