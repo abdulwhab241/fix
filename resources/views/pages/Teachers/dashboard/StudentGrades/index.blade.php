@@ -31,86 +31,53 @@
 @section('content')
 <!-- row -->
 <div class="row">
-<div class="col-md-12 mb-30">
-<div class="card card-statistics h-100">
-<div class="card-body">
-<div class="col-xl-12 mb-30">
-<div class="card card-statistics h-100">
-<div class="card-body">
-<a href="{{route('Teacher_Grades.create')}}" class="btn btn-success btn-sm" role="button"
-style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة كشـف الـدرجـات</a><br><br>
-<br><br>
-
-@if ($errors->any())
-<div class="alert alert-danger alert-dismissible fade show" role="alert">
-<ul>
-@foreach ($errors->all() as $error)
-<li>{{ $error }}</li>
-@endforeach
-</ul>
-<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-<span aria-hidden="true">&times;</span>
-</button>
-</div>
-@endif
-
-
-<div class="card card-statistics h-100">
-<div class="card-body">
-<div class="accordion gray plus-icon round">
-
-@foreach ($Classrooms as $Classroom)
-
-<div class="acd-group">
-<a href="#" class="acd-heading">
-    {{ $Classroom->My_Classes->name_class }} , الـشـعبـة: {{ $Classroom->name_section }} 
-</a>
-<div class="acd-des">
-
-<div class="row">
-<div class="col-xl-12 mb-30">
-<div class="card card-statistics h-100">
-<div class="card-body">
-<div class="d-block d-md-flex justify-content-between">
-<div class="d-block">
-</div>
-</div>
-<div class="table-responsive mt-15">
-<table class="table table-hover table-sm table-bordered p-0" style="text-align: center">
-<thead>
-<tr class="text-dark">
-    <th style="text-align: center; background-color: #D0DEF6;">الفـصل</th>
-    <th style="text-align: center; background-color: yellow;" >محصـلـة شهـر</th>
-    <th style="text-align: center; background-color: #D0DEF6;">المادة</th>
-    <th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب \ الطـالبـة</th>
-    <th style="text-align: center; background-color: #D0DEF6;">واجبـات</th>
-    <th style="text-align: center; background-color: #D0DEF6;">شفهـي</th>
-    <th style="text-align: center; background-color: #D0DEF6;">مـواظبـة</th>
-    <th style="text-align: center; background-color: #E7EEFB;">تحريري</th>
-    <th style="text-align: center; background-color: #FFC0D6;"> المحصـلة</th>
-    <th style="text-align: center;" class="alert-warning">العمليات</th>
-</tr>
-</thead>
-<tbody>
-    @foreach($Classroom->StudentGrades as $Student_Grade)
-    <tr>
-        <td>{{$Student_Grade->semester->name}}</td>
-        <td style="background-color: yellow; font-weight:bolder;">{{ $Student_Grade->month->name }}</td>
-        <td>{{$Student_Grade->subject->name}}</td>
-        <td>{{$Student_Grade->student->name}}</td>
-        <td>{{$Student_Grade->homework }}</td>
-        <td>{{$Student_Grade->verbal}}</td>
-        <td>{{ $Student_Grade->attendance }}</td>
-        <td style="background-color: #E7EEFB; font-weight:bolder;">{{ $Student_Grade->result }}</td>
-        <td style="background-color: #FFC0D6; font-weight:bolder;">{{ $Student_Grade->total }}</td>
-        <td>
-            <div class="btn-group">
-            <a href="{{route('Teacher_Grades.edit',$Student_Grade->id)}}" style="margin: 3px;" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل">تعديل</a>
-            <button type="button" style="margin: 3px;" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_result{{ $Student_Grade->id }}" title="حذف">حذف</button>
-            </div>
-        </td>
+    <div class="col-md-12 mb-30">
+    <div class="card card-statistics h-100">
+    <div class="card-body">
+    <div class="col-xl-12 mb-30">
+    <div class="card card-statistics h-100">
+    <div class="card-body">
+        <a href="{{route('Teacher_Grades.create')}}" class="btn btn-success btn-sm" role="button"
+        style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة كشـف الـدرجـات</a><br><br>
+    <div class="table-responsive">
+    <table id="data" class="table  table-hover table-sm table-bordered p-0"
+        data-page-length="50"
+        style="text-align: center">
+    <thead>
+    <tr class="text-dark">
+        <th style="text-align: center; background-color: #D0DEF6;">الفـصل</th>
+        <th style="text-align: center; background-color: yellow;" >محصـلـة شهـر</th>
+        <th style="text-align: center; background-color: #D0DEF6;">المادة</th>
+        <th style="text-align: center; background-color: #D0DEF6;">أسـم الطـالـب \ الطـالبـة</th>
+        <th style="text-align: center; background-color: #D0DEF6;">واجبـات</th>
+        <th style="text-align: center; background-color: #D0DEF6;">شفهـي</th>
+        <th style="text-align: center; background-color: #D0DEF6;">مـواظبـة</th>
+        <th style="text-align: center; background-color: #E7EEFB;">تحريري</th>
+        <th style="text-align: center; background-color: #FFC0D6;"> المحصـلة</th>
+        <th style="text-align: center;" class="alert-warning">العمليات</th>
     </tr>
-
+    </thead>
+    <tbody>
+        @foreach ($StudentGrades as $Student_Grade)
+        <tr>
+            <td>{{$Student_Grade->semester->name}}</td>
+            <td style="background-color: yellow; font-weight:bolder;">{{ $Student_Grade->month->name }}</td>
+            <td>{{$Student_Grade->subject->name}}</td>
+            <td>{{$Student_Grade->student->name}}</td>
+            <td>{{$Student_Grade->homework }}</td>
+            <td>{{$Student_Grade->verbal}}</td>
+            <td>{{ $Student_Grade->attendance }}</td>
+            <td style="background-color: #E7EEFB; font-weight:bolder;">{{ $Student_Grade->result }}</td>
+            <td style="background-color: #FFC0D6; font-weight:bolder;">{{ $Student_Grade->total }}</td>
+            <td>
+                <div class="btn-group">
+                <a href="{{route('Teacher_Grades.edit',$Student_Grade->id)}}" style="margin: 3px;" class="btn btn-info btn-sm" role="button" aria-pressed="true" title="تعديل">تعديل</a>
+                <button type="button" style="margin: 3px;" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#delete_result{{ $Student_Grade->id }}" title="حذف">حذف</button>
+                </div>
+            </td>
+        </tr>
+    
+    
 <!-- Delete modal -->
 <div class="modal fade" id="delete_result{{$Student_Grade->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 <div class="modal-dialog modal-danger" role="document">
@@ -143,28 +110,10 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة كشـف ال�
 </div>
 
 
-@endforeach
+    @endforeach
 </tbody>
 </table>
 </div>
-
-<div class="footer">
-    <a href="{{ route('Teacher_Grades.print',$Classroom->id) }}" style="margin: 10px; padding:5px;" class="btn btn-info pull-left">
-        <i class="fa fa-print" aria-hidden="true"></i>  طبـاعـة  </a>
-</div>
-
-</div>
-</div>
-</div>
-</div>
-</div>
-@endforeach
-</div>
-</div>
-</div>
-</div>
-
-
 </div>
 </div>
 </div>

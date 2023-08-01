@@ -56,7 +56,7 @@
 
 
 <div class="table-responsive">
-<table id="datatable" class="table  table-hover table-sm table-bordered p-0" data-page-length="50"
+<table id="data" class="table  table-hover table-sm table-bordered p-0" data-page-length="50"
 style="text-align: center">
 <thead>
 <tr>

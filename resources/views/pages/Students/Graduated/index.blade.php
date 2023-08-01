@@ -41,7 +41,7 @@
 style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة تخرج جديـد</a>
 <br><br>
 <div class="table-responsive">
-    <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
+    <table id="data" class="table  table-hover table-sm table-bordered p-0"
             data-page-length="50"
             style="text-align: center">
         <thead>

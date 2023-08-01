@@ -41,7 +41,7 @@
 <a href="{{route('Upgrades.create')}}" class="btn btn-success btn-sm" role="button"
 style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة ترقيـة جديدة</a><br><br>
 <div class="table-responsive">
-    <table id="datatable" class="table  table-hover table-sm table-bordered p-0"
+    <table id="data" class="table  table-hover table-sm table-bordered p-0"
             data-page-length="50"
             style="text-align: center">
         <thead>
@@ -105,79 +105,6 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة ترقيـة �
 </div>
 </div>
 <!-- row closed -->
-
-
-
-{{-- @section('content')
-
-<!-- Content Header (Page header) -->
-<section class="content-header">
-<h1>
-قائمة الترقيات
-</h1>
-<ol class="breadcrumb">
-<li><a href="{{ route('dashboard') }}"><i class="fa fa-home"></i> الرئيسيـة</a></li>
-
-<li class="active">قائمة الترقيات</li>
-</ol>
-</section>
-
-<!-- Main content -->
-<section class="content">
-
-<div class="row">
-<div class="col-xs-12">
-<div class="box">
-@if ($errors->any())
-<div class="alert alert-danger">
-<ul>
-@foreach ($errors->all() as $error)
-<li>{{ $error }}</li>
-@endforeach
-</ul>
-</div>
-@endif
-<div class="box-header">
-
-
-<div class="box-tools">
-<div class="input-group" style="width: 150px;">
-    <h5 style="font-family: 'Cairo', sans-serif;color: blue"> تاريخ اليوم : {{ date('Y-m-d') }}</h5>
-
-</div>
-</div>
-</div>
-
-<div class="box-body">
-<div class="box-body table-responsive no-padding">
-    <table id="example1" class="table table-bordered table-striped" style="width:100%; text-align: center;">
-<thead>
-<tr>
-
-</tr>
-</thead>
-<tbody>
-
-
-@endforeach
-
-</tbody>
-</tbody>
-</table>
-
-
-</div>
-
-
-
-</div>
-
-
-</div>
-</div>
-</div>
-</section> --}}
-
 @endsection
 @section('js')
 

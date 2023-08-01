@@ -16,8 +16,9 @@ class StudentMidResultController extends Controller
 {
     public function index()
     {
+        $subject_id =  TeacherSubject::where('teacher_id',auth()->user()->id)->where('year', date("Y"))->pluck('subject_id');
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
-        $MidResults = MidResult::where('year', date('Y'))->whereIn('section_id', $ids)->get();
+        $MidResults = MidResult::where('year', date('Y'))->whereIn('section_id', $ids)->where('subject_id', $subject_id)->get();
         return view('pages.Teachers.dashboard.StudentMidResults.index',compact('MidResults'));
     }
 

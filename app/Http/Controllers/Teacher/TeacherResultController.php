@@ -6,7 +6,7 @@ use App\Models\Exam;
 use App\Models\User;
 use App\Models\Month;
 use App\Models\Result;
-use App\Models\Section;
+// use App\Models\Section;
 use App\Models\Student;
 use App\Models\Semester;
 use App\Models\Enrollment;
@@ -14,7 +14,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ResultRequest;
-use App\Models\TeacherSubject;
 use App\Notifications\ResultNotification;
 use Illuminate\Support\Facades\Notification;
 use App\Notifications\Teacher\TeacherResultNotification;
@@ -23,34 +22,35 @@ class TeacherResultController extends Controller
 {
     public function index()
     { 
-        $subjects = TeacherSubject::where('teacher_id',auth()->user()->id)->where('year', date("Y"))->get();
+        $exam_id =  Exam::where('teacher_id',auth()->user()->id)->where('year', date("Y"))->pluck('id');
+        $exams = Exam::distinct()->where('teacher_id',auth()->user()->id)->where('year', date("Y"))->get(['subject_id']);
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
-        $results = Section::with(['Results'])->whereIn('id', $ids)->where('year',date('Y'))->get();
+        $Results = Result::whereIn('section_id', $ids)->where('exam_id', $exam_id)->where('year',date('Y'))->get();
         $Months = Month::all();
         $Semesters = Semester::all();
-
-        return view('pages.Teachers.dashboard.Result.index', compact('subjects','results','Months','Semesters'));
+        return view('pages.Teachers.dashboard.Result.index', compact('exams','Results','Months','Semesters'));
     }
 
     public function create()
     {
-        $subjects = TeacherSubject::where('teacher_id',auth()->user()->id)->where('year', date("Y"))->get();
+        $exams = Exam::distinct()->where('teacher_id',auth()->user()->id)->where('year', date("Y"))->get(['subject_id']);
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
         $students= Enrollment::whereIn('section_id', $ids)->where('year', date("Y"))->get();
         $Semesters = Semester::all();
         $Months = Month::all();
 
-        return view('pages.Teachers.dashboard.Result.add', compact('subjects','students','Semesters','Months'));
+        return view('pages.Teachers.dashboard.Result.add', compact('exams','students','Semesters','Months'));
     }
 
-    public function print($id)
-    {
-        $Results = Section::with(['Results'])->findOrFail( $id);
-        return view('pages.Teachers.dashboard.Result.print', compact('Results'));
-    }
+    // public function print($id)
+    // {
+    //     $Results = Section::with(['Results'])->findOrFail( $id);
+    //     return view('pages.Teachers.dashboard.Result.print', compact('Results'));
+    // }
 
     public function store(ResultRequest $request)
     {
+        // dd($request);
         try
         {
             $sections = Enrollment::where('student_id',strip_tags($request->Student_id))->where('year', date('Y'))->pluck('section_id');
