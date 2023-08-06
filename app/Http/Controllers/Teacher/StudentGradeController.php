@@ -30,7 +30,6 @@ class StudentGradeController extends Controller
 
         $StudentGrades = StudentGrade::whereIn('section_id', $ids)->where('subject_id', $subject_id)->where('year',date('Y'))->get();
 
-        $Classrooms = Section::with(['StudentGrades'])->where('year', date('Y'))->whereIn('id', $ids)->get();
         return view('pages.Teachers.dashboard.StudentGrades.index',compact('StudentGrades'));
     }
 
