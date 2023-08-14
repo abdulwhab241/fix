@@ -34,9 +34,6 @@
     <div class="col-md-12 mb-30">
     <div class="card card-statistics h-100">
     <div class="card-body">
-    <div class="col-xl-12 mb-30">
-    <div class="card card-statistics h-100">
-    <div class="card-body">
 <a class="btn btn-success btn-sm" href="#" data-toggle="modal" style="padding:5px; margin: 5px;" data-target="#exampleModal">
 اضافة قسـم</a>
 <br><br>
@@ -54,8 +51,7 @@
 @endif
 
 
-<div class="card card-statistics h-100">
-<div class="card-body">
+
 <div class="accordion gray plus-icon round">
 
 @foreach ($Grades as $Grade)
@@ -66,8 +62,7 @@
 
 <div class="row">
 <div class="col-xl-12 mb-30">
-<div class="card card-statistics h-100">
-<div class="card-body">
+
 <div class="d-block d-md-flex justify-content-between">
 <div class="d-block">
 </div>
@@ -239,17 +234,12 @@ disabled style="text-align: center; font-weidth:bolder; font-size:20px;">
 </div>
 </div>
 </div>
-</div>
-</div>
 @endforeach
 </div>
 </div>
-</div>
-</div>
 
 
-</div>
-</div>
+
 </div>
 </div>
 </div>
