@@ -34,9 +34,7 @@
 <div class="col-md-12 mb-30">
 <div class="card card-statistics h-100">
 <div class="card-body">
-<div class="col-xl-12 mb-30">
-<div class="card card-statistics h-100">
-<div class="card-body">
+
 <br>
 <div class="table-responsive">
     <table id="data" class="table  table-hover table-sm table-bordered p-0"
@@ -64,9 +62,6 @@
         </tbody>
         </table>
     </div>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>

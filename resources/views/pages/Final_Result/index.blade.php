@@ -34,9 +34,6 @@
 <div class="col-md-12 mb-30">
 <div class="card card-statistics h-100">
 <div class="card-body">
-<div class="col-xl-12 mb-30">
-<div class="card card-statistics h-100">
-<div class="card-body">
 <div class="box-body">
 <a href="{{route('Final_Results.create')}}" style="padding: 5px; margin:5px;" class="btn btn-success btn-sm" role="button"  
 aria-pressed="true">اضافة نتيـجة طـالـب</a>
@@ -128,9 +125,6 @@ disabled>
 @endforeach
 </tbody>
 </table>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>

@@ -34,9 +34,6 @@
 <div class="col-md-12 mb-30">
 <div class="card card-statistics h-100">
 <div class="card-body">
-<div class="col-xl-12 mb-30">
-<div class="card card-statistics h-100">
-<div class="card-body">
 <a href="{{route('Graduated.create')}}" class="btn btn-success btn-sm" role="button"
 style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة تخرج جديـد</a>
 <br><br>
@@ -76,9 +73,6 @@ style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة تخرج جد�
         </tbody>
         </table>
     </div>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>

@@ -34,9 +34,6 @@
 <div class="col-md-12 mb-30">
 <div class="card card-statistics h-100">
 <div class="card-body">
-<div class="col-xl-12 mb-30">
-<div class="card card-statistics h-100">
-<div class="card-body">
     <div class="box-body">
         <a href="{{route('Fees_Invoices.create')}}" style="margin: 5px; padding:5px;" class="btn btn-success btn-sm" role="button"
         aria-pressed="true">اضافة فـاتـورة جديدة</a>
@@ -88,9 +85,6 @@
         </tbody>
         </table>
     </div>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>

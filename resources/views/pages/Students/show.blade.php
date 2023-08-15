@@ -36,7 +36,6 @@
 <div class="col-md-12 mb-30">
 <div class="card card-statistics h-100">
 <div class="card-body">
-<div class="card-body">
 <div class="tab nav-border">
 <ul class="nav nav-tabs" role="tablist">
 <li class="nav-item">
@@ -293,7 +292,6 @@ aria-labelledby="profile-02-tab">
 </div>
 </div>
 
-</div>
 </div>
 </div>
 </div>

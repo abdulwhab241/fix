@@ -26,9 +26,15 @@ class StudentGradeController extends Controller
     public function index()
     {
         $subject_id =  TeacherSubject::where('teacher_id',auth()->user()->id)->where('year', date("Y"))->pluck('subject_id');
+        
+        if($subject_id == null)
+        {
+            $subject_id = 0;
+        }
+
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
 
-        $StudentGrades = StudentGrade::whereIn('section_id', $ids)->where('subject_id', $subject_id)->where('year',date('Y'))->get();
+        $StudentGrades = StudentGrade::whereIn('section_id', $ids)->whereIn('subject_id', $subject_id)->where('year',date('Y'))->get();
 
         return view('pages.Teachers.dashboard.StudentGrades.index',compact('StudentGrades'));
     }

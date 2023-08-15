@@ -34,9 +34,6 @@
 <div class="col-md-12 mb-30">
 <div class="card card-statistics h-100">
 <div class="card-body">
-<div class="col-xl-12 mb-30">
-<div class="card card-statistics h-100">
-<div class="card-body">
     <div class="box" id="print">
         <style>
             .col-md-4 {
@@ -208,9 +205,7 @@
         <i class="fa fa-print" aria-hidden="true"></i> طباعة  </button>
     </div>
 
-</div>
-</div>
-</div>
+
 </div>
 </div>
 </div>

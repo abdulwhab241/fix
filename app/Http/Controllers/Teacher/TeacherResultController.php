@@ -23,9 +23,15 @@ class TeacherResultController extends Controller
     public function index()
     { 
         $exam_id =  Exam::where('teacher_id',auth()->user()->id)->where('year', date("Y"))->pluck('id');
+
+        if($exam_id == null)
+        {
+            $exam_id = 0;
+        }
+
         $exams = Exam::distinct()->where('teacher_id',auth()->user()->id)->where('year', date("Y"))->get(['subject_id']);
         $ids = DB::table('teacher_section')->where('teacher_id', auth()->user()->id)->pluck('section_id');
-        $Results = Result::whereIn('section_id', $ids)->where('exam_id', $exam_id)->where('year',date('Y'))->get();
+        $Results = Result::whereIn('section_id', $ids)->whereIn('exam_id', $exam_id)->where('year',date('Y'))->get();
         $Months = Month::all();
         $Semesters = Semester::all();
         return view('pages.Teachers.dashboard.Result.index', compact('exams','Results','Months','Semesters'));

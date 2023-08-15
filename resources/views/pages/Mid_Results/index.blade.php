@@ -35,9 +35,6 @@
 <div class="col-md-12 mb-30">
 <div class="card card-statistics h-100">
 <div class="card-body">
-<div class="col-xl-12 mb-30">
-<div class="card card-statistics h-100">
-<div class="card-body">
     <div class="box-body">
         <a href="{{route('MidResults.create')}}" class="btn btn-success btn-sm" style="padding: 5px; margin:5px;" role="button" 
         aria-pressed="true">اضافة نتيـجة طـالـب</a>
@@ -126,9 +123,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+
 
 <!-- add_modal_class -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
@@ -215,7 +210,6 @@ class="btn btn-primary btn-block">إرسـال </button>
 </div>
 </div>
 </div>
-
 </div>
 <!-- row closed -->
 @endsection

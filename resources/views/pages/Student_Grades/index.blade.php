@@ -34,9 +34,6 @@
 <div class="col-md-12 mb-30">
 <div class="card card-statistics h-100">
 <div class="card-body">
-<div class="col-xl-12 mb-30">
-<div class="card card-statistics h-100">
-<div class="card-body">
 <div class="box-body">
     <a href="{{route('Student_Grades.create')}}" class="btn btn-success btn-sm" style="margin: 5px; padding: 5px;" role="button"
 aria-pressed="true">اضافة كشـف الـدرجـات</a>
@@ -136,9 +133,6 @@ aria-pressed="true">اضافة كشـف الـدرجـات</a>
         <a href="{{ route('StudentGrades.print') }}" style="margin: 10px; padding:5px;" class="btn .btn.bg-navy  pull-left">
             <i class="fa fa-print" aria-hidden="true"></i>  طبـاعـة  </a>
     </div>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>

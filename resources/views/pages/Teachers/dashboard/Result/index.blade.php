@@ -35,9 +35,7 @@
 <div class="col-md-12 mb-30">
 <div class="card card-statistics h-100">
 <div class="card-body">
-<div class="col-xl-12 mb-30">
-<div class="card card-statistics h-100">
-<div class="card-body">
+
     <a href="{{route('TeacherResult.create')}}" class="btn btn-success btn-sm" role="button"
     style="margin: 5px; padding: 5px;" aria-pressed="true">اضافة نتيجـة شهرية جديدة</a><br><br>
 <div class="table-responsive">
@@ -219,9 +217,7 @@
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
+
 <!-- row closed -->
 @endsection
 @section('js')

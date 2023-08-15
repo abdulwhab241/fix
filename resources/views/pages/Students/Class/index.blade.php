@@ -34,9 +34,6 @@
 <div class="col-md-12 mb-30">
 <div class="card card-statistics h-100">
 <div class="card-body">
-<div class="col-xl-12 mb-30">
-<div class="card card-statistics h-100">
-<div class="card-body">
 <br>
 @if(count($StudentClass) > 0)
 <div class="table-responsive">
@@ -79,9 +76,6 @@
     </marquee>
     </h1>
 @endif
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>

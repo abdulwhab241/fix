@@ -35,9 +35,6 @@
 <div class="col-md-12 mb-30">
 <div class="card card-statistics h-100">
 <div class="card-body">
-<div class="col-xl-12 mb-30">
-<div class="card card-statistics h-100">
-<div class="card-body">
 <div class="box-body">
     <a href="{{route('Receipts.create')}}" class="btn btn-success btn-sm" style="margin: 5px; padding: 5px;" role="button"
     aria-pressed="true">اضافة سنـد تسديـد </a>
@@ -86,9 +83,6 @@
         </tbody>
         </table>
     </div>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
